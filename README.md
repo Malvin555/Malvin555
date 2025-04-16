@@ -1,29 +1,52 @@
-# Hi there! I'm [Your Name] 👋
+# 👋 Hi, I'm Malvin – Normal Developer
 
-I'm a passionate full-stack developer, working with JavaScript, React, and Node.js. I love building web applications and contributing to open-source projects. Currently, I'm focused on creating scalable and efficient solutions for various challenges in the tech world. 
+I’m a **Normal Developer** passionate about creating impactful, scalable web applications. With expertise in **JavaScript**, **PHP**, **Rust**, **Laravel**, and modern web technologies, I focus on building seamless user experiences while ensuring high-performance backend systems.
 
-## 💻 Technologies & Tools:
-- **Frontend:** JavaScript (React, Vue.js), HTML, CSS
-- **Backend:** Node.js, Express.js, Laravel
-- **Databases:** MongoDB, MySQL, PostgreSQL
-- **Version Control:** Git & GitHub
-- **Other Tools:** Docker, Kubernetes, Nginx
+I'm driven by continuous learning and open-source contributions. Let’s build something great together!
 
-## 📬 How to Reach Me:
+## 🌍 Connect with Me
 - [LinkedIn](https://www.linkedin.com/in/yourprofile)
 - [Twitter](https://twitter.com/yourprofile)
 - [Portfolio](https://yourportfolio.com)
 
-## 📈 GitHub Stats
-![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=yourgithubusername&show_icons=true&hide_title=true&count_private=true&hide=prs)
+## 🛠️ Technologies & Tools
 
-## 📜 License
+### **Frontend**
+- **Languages**: JavaScript (React, Vue.js), HTML5, CSS, TypeScript
+- **Styling**: Bootstrap, TailwindCSS
 
-This repository and all its contents are licensed under the **MIT License**.
+### **Backend**
+- **Languages**: JavaScript, Laravel (PHP)
+- **Databases**: MongoDB, PostgreSQL, MySQL
+- **APIs**: RESTful APIs, GraphQL, WebSockets
 
-The MIT License allows you to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, as long as the following conditions are met:
+### **DevOps & Tools**
+- **Version Control**: Git, GitHub
+- **Containerization & Orchestration**: Docker
 
-1. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-2. The software is provided "as is", without warranty of any kind.
+## 📊 GitHub Stats
 
-For more details, please refer to the LICENSE file in this repository.
+![Your GitHub Stats](https://github-readme-stats.vercel.app/api?username=yourgithubusername&show_icons=true&count_private=true&hide_title=true&hide=prs)
+
+## 📜 License Information
+
+This repository and its contents are licensed under the **MIT License**.
+
+- **MIT License**: You may freely use, modify, and distribute the software, with the condition that the original copyright and permission notice are included in all copies or substantial portions of the software. The software is provided "as is", without warranty of any kind.
+
+For more details, check out the LICENSE file in this repository.
+
+## 🌱 Currently Learning
+
+- Exploring **Machine Learning** & **AI** technologies for smarter applications
+- Deepening knowledge of **Serverless Architectures** using **AWS** and **Google Cloud**
+- Mastering **TypeScript** for better scalability and type safety in large applications
+
+## 💬 Let’s Work Together!
+
+I’m always open to new collaborations, and I love discussing innovative projects. If you're interested in working with me or need help with a web development challenge, feel free to reach out.
+
+---
+
+> "The only way to do great work is to love what you do." – Steve Jobs
+
