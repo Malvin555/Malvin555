@@ -56,7 +56,7 @@ export default function Navigation({
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-border/50">
+      <nav className="fixed top-0 w-full z-50 bg-background/20 backdrop-blur-xl border-b border-border/50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
@@ -113,7 +113,7 @@ export default function Navigation({
         <div className="fixed inset-0 z-40 lg:hidden">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-background/80 backdrop-blur-md"
+            className="absolute inset-0 bg-background/20 backdrop-blur-md"
             onClick={closeMobileMenu}
           />
 
