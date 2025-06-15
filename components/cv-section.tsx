@@ -9,6 +9,8 @@ import {
   Code,
   Users,
   Calendar,
+  Github,
+  Mail,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -67,7 +69,7 @@ export default function CVSection() {
   ];
 
   return (
-    <section className="py-20 px-6 bg-muted/20">
+    <section id="contact" className="py-20 px-6 bg-muted/20">
       <div className="container mx-auto">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
@@ -75,9 +77,7 @@ export default function CVSection() {
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 mb-6 border border-primary/20">
               <FileText className="w-10 h-10 text-primary" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Professional Resume
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Resume</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Comprehensive overview of my experience, skills, and achievements
               in software development
@@ -230,7 +230,10 @@ export default function CVSection() {
                       className="w-full"
                       asChild
                     >
-                      <a href="mailto:contact@malvin.dev">📧 Email Me</a>
+                      <a href="mailto:malvinbrine475@gmail.com">
+                        <Mail className="w-4 h-4 mr-2" />
+                        Email Me
+                      </a>
                     </Button>
                     <Button
                       variant="outline"
@@ -243,7 +246,8 @@ export default function CVSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        🔗 View GitHub
+                        <Github className="w-4 h-4 mr-2" />
+                        View GitHub
                       </a>
                     </Button>
                   </div>
