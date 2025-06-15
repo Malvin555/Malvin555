@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+  <!-- LOGO -->
+  <img src="public/logo.png" alt="Malvin Logo" width="100" style="margin-bottom: 20px;" />
 
-First, run the development server:
+  <!-- NAME & TITLE -->
+  <h1 align="center" style="font-size: 3rem; font-weight: bold; margin: 0;">Malvin</h1>
+  <p align="center" style="font-size: 1.2rem; color: #999;">Full-Stack Developer • Linux Enthusiast • Cybersecurity Explorer</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  <!-- MOTTO -->
+  <em style="color: #ccc;">"Building the future, one line of code at a time"</em>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  <!-- PROFILE VIEWS -->
+  <br/><br/>
+  <img src="https://komarev.com/ghpvc/?username=Malvin555&label=Profile+Views&color=000000&style=flat-square" alt="Profile Views" />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+</div>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 About Me
 
-To learn more about Next.js, take a look at the following resources:
+I'm Malvin — a passionate full-stack engineer focused on building clean, scalable, and secure systems.  
+My love for **Linux**, **backend engineering**, and **devops** drives me to keep pushing boundaries and exploring new technologies.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+### 💻 Languages & Frameworks
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=js,ts,python,php,html,css,bash,react,next,nodejs,laravel,fastapi&theme=dark" />
+</div>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🗄️ Databases & Platforms
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=mysql,postgres,mongodb,redis&theme=dark" />
+</div>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🧰 Tools & Cloud
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=docker,linux,git,github,vercel,aws&theme=dark" />
+</div>
+
+---
+
+## 📊 GitHub Stats
+
+<div align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Malvin555&show_icons=true&theme=github_dark&count_private=true&hide_border=true" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Malvin555&layout=compact&theme=github_dark&hide_border=true" />
+</div>
+
+---
+
+## 🔥 Streak & Activity
+
+<div align="center">
+  <img src="https://streak-stats.demolab.com?user=Malvin555&theme=github-dark&hide_border=true&date_format=j%20M%5B%20Y%5D" />
+</div>
+
+---
+
+## ⚡ Contribution Graph
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Malvin555&theme=github-dark&hide_border=true&area=true" />
+</div>
+
+---
+
+## 🌐 Connect With Me
+
+<div align="center">
+  <a href="https://github.com/Malvin555">
+    <img src="https://img.shields.io/badge/GitHub-Malvin555-000000?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://malvolio.vercel.app">
+    <img src="https://img.shields.io/badge/Portfolio-malvolio.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
+  <a href="https://linkedin.com/in/malvin">
+    <img src="https://img.shields.io/badge/LinkedIn-malvin-000000?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+</div>
