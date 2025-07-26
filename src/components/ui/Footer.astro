@@ -1,0 +1,93 @@
+---
+import { Icon } from "astro-icon/components";
+const currentYear = new Date().getFullYear();
+const socialLinks = [
+  { name: "github", url: "https://github.com/malvin555" },
+  { name: "email", url: "mailto:malvin@example.com" },
+];
+---
+
+<footer class="border-t border-gray-800">
+  <!-- Main Footer Content -->
+  <div class="mx-auto max-w-6xl py-4 md:py-6">
+    <div class="grid gap-4 text-center md:grid-cols-3 md:gap-6 md:text-left">
+      <!-- Terminal Output -->
+      <div class="md:col-span-2">
+        <div class="space-y-1 font-mono text-xs sm:text-sm">
+          <p class="text-gray-500">$ cat /etc/motd</p>
+          <p class="text-green-400">Thanks for visiting my portfolio!</p>
+          <p class="text-gray-400">Always learning, always building.</p>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="font-mono text-xs sm:text-sm">
+        <p class="mb-2 text-gray-500">$ ls links/</p>
+        <div
+          class="flex flex-wrap justify-center gap-3 sm:gap-4 md:justify-start"
+        >
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-400 transition-all duration-200 ease-out hover:-translate-y-px hover:text-green-400"
+              >
+                {link.name}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-800 px-4 py-3 text-center md:p-4">
+    <p
+      class="flex flex-wrap items-center justify-center gap-1 font-mono text-xs text-gray-400 sm:text-sm"
+    >
+      <span class="text-gray-600">$</span>
+      echo "Made with"
+      <Icon name="mdi:heart" class="text-red-500" size={16} />
+      by Malvin © {currentYear} && exit 0
+    </p>
+  </div>
+
+  <!-- Back to Top -->
+  <button
+    id="back-to-top"
+    class="pointer-events-none fixed right-4 bottom-4 bg-green-700 p-5 text-black opacity-0 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/30 md:right-6 md:bottom-6 md:p-3"
+    onclick="scrollToTop()"
+    title="Back to top"
+  >
+    <span class="font-mono text-xs md:text-sm">↑</span>
+  </button>
+</footer>
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  // Show/hide back to top button
+  window.addEventListener("scroll", () => {
+    const backToTop = document.getElementById("back-to-top");
+    if (backToTop) {
+      if (window.scrollY > 300) {
+        backToTop.classList.remove("opacity-0", "pointer-events-none");
+        backToTop.classList.add("opacity-100");
+      } else {
+        backToTop.classList.add("opacity-0", "pointer-events-none");
+        backToTop.classList.remove("opacity-100");
+      }
+    }
+  });
+
+  // Make function globally available
+  (window as any).scrollToTop = scrollToTop;
+</script>

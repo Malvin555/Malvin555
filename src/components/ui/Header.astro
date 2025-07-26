@@ -1,0 +1,116 @@
+---
+// Optional: Add navigation items
+const navItems = [
+  { name: "about", href: "#about" },
+  { name: "skills", href: "#skills-projects" },
+  { name: "contact", href: "#contact" },
+];
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-gray-800 bg-black/90 p-4 backdrop-blur"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between">
+    <!-- Terminal Window Controls -->
+    <div class="flex items-center gap-2">
+      <div class="flex gap-2">
+        <div
+          class="h-3 w-3 cursor-pointer rounded-full bg-red-500 transition-colors hover:bg-red-400"
+          title="Close"
+        >
+        </div>
+        <div
+          class="h-3 w-3 cursor-pointer rounded-full bg-yellow-500 transition-colors hover:bg-yellow-400"
+          title="Minimize"
+        >
+        </div>
+        <div
+          class="h-3 w-3 cursor-pointer rounded-full bg-green-500 transition-colors hover:bg-green-400"
+          title="Maximize"
+        >
+        </div>
+      </div>
+      <span class="ml-4 font-mono text-white">malvin@portfolio:~$</span>
+    </div>
+
+    <!-- Optional: Navigation Menu (Desktop) -->
+    <nav class="hidden items-center gap-6 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="font-mono text-sm text-gray-400 transition-all duration-200 ease-out hover:text-green-400"
+          >
+            ./{item.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="text-gray-400 transition-colors hover:text-green-400 md:hidden"
+      onclick="toggleMobileMenu()"
+    >
+      <span class="font-mono text-sm">menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <nav
+    id="mobile-menu"
+    class="mt-4 hidden border-t border-gray-800 pt-4 transition-all duration-300 ease-out md:hidden"
+  >
+    <div class="flex flex-col gap-2">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="py-2 font-mono text-sm text-gray-400 transition-all duration-200 ease-out  hover:text-green-400"
+            onclick="toggleMobileMenu()"
+          >
+            $ cd {item.name}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</header>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobile-menu");
+    const btn = document.getElementById("mobile-menu-btn");
+
+    if (menu && btn) {
+      if (menu.classList.contains("hidden")) {
+        menu.classList.remove("hidden");
+        btn.innerHTML = '<span class="font-mono text-sm">close</span>';
+      } else {
+        menu.classList.add("hidden");
+        btn.innerHTML = '<span class="font-mono text-sm">menu</span>';
+      }
+    }
+  }
+
+  // Make function globally available
+  (window as any).toggleMobileMenu = toggleMobileMenu;
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = anchor.getAttribute("href");
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+    });
+  });
+</script>

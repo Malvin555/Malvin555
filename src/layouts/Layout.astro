@@ -1,22 +1,57 @@
+---
+import "../styles/global.css";
+const siteTitle = "Malvin – Web Developer & IT Student";
+const siteDescription =
+  "Portfolio of Malvin, a passionate web developer with experience in Next.js, Laravel, and cybersecurity.";
+const siteURL = "https://malvolio.vercel.app";
+const siteImage = `${siteURL}/android-chrome-512x512.png`;
+const { title, description } = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:image" content={siteImage} />
+    <meta property="og:url" content={siteURL} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image" content={siteImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body class="min-h-screen bg-black font-mono text-green-400">
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  body {
+    background: #0c0c0c;
+  }
+
+  pre {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 768px) {
+    pre {
+      font-size: 0.6rem;
+    }
+  }
 </style>

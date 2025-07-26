@@ -1,0 +1,125 @@
+---
+import { Icon } from "astro-icon/components";
+const links = [
+  { name: "GitHub", url: "https://github.com/malvin555", icon: "mdi:github" },
+  { name: "Email", url: "mailto:malvin@example.com", icon: "mdi:email" },
+  { name: "Resume", url: "/resume.pdf", download: true, icon: "mdi:file-pdf" },
+];
+---
+
+<section
+  class="flex min-h-screen flex-col items-center justify-center scroll-smooth px-4 text-center font-mono text-green-400 antialiased"
+>
+  <!-- ASCII Banner -->
+  <pre
+    class="mb-8 text-center text-[8px] leading-none whitespace-pre select-none sm:text-[12px] md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+███▄ ▄███▓ ▄▄▄       ██▓     ██▒   █▓ ██▓ ███▄    █
+▓██▒▀█▀ ██▒▒████▄    ▓██▒    ▓██░   █▒▓██▒ ██ ▀█   █
+▓██    ▓██░▒██  ▀█▄  ▒██░     ▓██  █▒░▒██▒▓██  ▀█ ██▒
+▒██    ▒██ ░██▄▄▄▄██ ▒██░      ▒██ █░░░██░▓██▒  ▐▌██▒
+▒██▒   ░██▒ ▓█   ▓██▒░██████▒   ▒▀█░  ░██░▒██░   ▓██░
+░ ▒░   ░  ░ ▒▒   ▓▒█░░ ▒░▓  ░   ░ ▐░  ░▓  ░ ▒░   ▒ ▒
+░  ░      ░  ▒   ▒▒ ░░ ░ ▒  ░   ░ ░░   ▒ ░░ ░░   ░ ▒░
+░      ░     ░   ▒     ░ ░        ░░   ▒ ░   ░   ░ ░
+       ░         ░  ░    ░  ░      ░   ░           ░
+                                  ░
+  </pre>
+
+  <!-- Terminal Identity -->
+  <div class="mb-8">
+    <p class="mb-2 text-base text-white select-none md:text-lg">$ whoami</p>
+    <h1 class="mb-4 text-xl font-bold text-green-300 md:text-2xl lg:text-3xl">
+      Malvin — <span id="typewriter" class="inline-block text-green-300"></span>
+      & Linux Enthusiast
+    </h1>
+    <p
+      class="mx-auto max-w-2xl text-sm leading-relaxed text-gray-400 md:text-base"
+    >
+      "Building the future, one line of code at a time"<br />
+      <span class="mt-2 block text-xs md:text-sm">
+        Self-taught • Web Dev • Linux • Cybersecurity • Language Lover
+      </span>
+    </p>
+  </div>
+
+  <!-- Terminal Buttons -->
+  <div
+    class="mb-8 flex w-full max-w-lg flex-col justify-center gap-3 sm:flex-row sm:gap-4"
+  >
+    {
+      links.map((link) => (
+        <a
+          href={link.url}
+          class="group relative flex min-h-[48px] flex-1 items-center justify-center gap-2 overflow-hidden border border-green-400 px-6 py-3 text-sm font-medium transition-all duration-300 ease-out before:absolute before:top-0 before:left-[-100%] before:h-full before:w-full before:bg-gradient-to-r before:from-transparent before:via-green-500/20 before:to-transparent before:transition-all before:duration-500 before:content-[''] hover:-translate-y-0.5 hover:border-green-500 hover:bg-green-400 hover:text-black hover:shadow-[0_8px_25px_rgba(34,197,94,0.3)] hover:before:left-full active:translate-y-0 sm:min-w-[120px] sm:flex-none md:text-base"
+          target="_blank"
+          rel="noopener noreferrer"
+          download={link.download}
+        >
+          {link.icon && (
+            <Icon name={link.icon} size={24} class="text-green-300" />
+          )}
+          {link.name.toLowerCase()}
+        </a>
+      ))
+    }
+  </div>
+
+  <!-- Status Indicator -->
+  <div
+    class="flex items-center justify-center gap-2 text-xs text-gray-500 md:text-sm"
+  >
+    <div class="h-2 w-2 animate-pulse rounded-full bg-green-400"></div>
+    <span>Available for opportunities</span>
+  </div>
+</section>
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    const target = document.getElementById("typewriter");
+
+    if (!target) return;
+
+    const texts = [
+      "Full-Stack Developer",
+      "Back-End Developer",
+      "Front-End Developer",
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
+
+    function typeWriter() {
+      const currentText = texts[textIndex];
+
+      if (isPaused) {
+        setTimeout(typeWriter, 2000);
+        isPaused = false;
+        return;
+      }
+
+      if (isDeleting) {
+        target.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % texts.length;
+        }
+      } else {
+        target.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === currentText.length) {
+          isPaused = true;
+          isDeleting = true;
+        }
+      }
+
+      const typingSpeed = isDeleting ? 50 : 75;
+      setTimeout(typeWriter, typingSpeed);
+    }
+
+    typeWriter();
+  });
+</script>

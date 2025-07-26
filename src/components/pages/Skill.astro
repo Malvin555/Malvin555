@@ -1,0 +1,530 @@
+---
+import { Icon } from "astro-icon/components";
+// Skills data
+const skills = {
+  Languages: ["JavaScript", "PHP", "Python", "Bash"],
+  Databases: ["MySQL", "MariaDB", "MongoDB"],
+  DevOps: ["Docker", "Podman", "Linux"],
+  Web: ["React", "Node.js", "Astro", "HTML/CSS"],
+  Learning: ["Cybersecurity", "Languages", "System Administration"],
+};
+
+// Types
+interface GitHubRepo {
+  name: string;
+  description: string | null;
+  language: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  updated_at: string;
+  html_url: string;
+  topics: string[];
+  fork: boolean;
+  archived: boolean;
+}
+
+interface ProcessedRepo {
+  name: string;
+  description: string;
+  language: string;
+  stars: number;
+  forks: number;
+  updated: string;
+  url: string;
+  topics: string[];
+}
+
+const terminalIcons: Record<keyof typeof skills, string> = {
+  Languages: "[EXE]",
+  Databases: "[DB]",
+  DevOps: "[SYS]",
+  Web: "[WWW]",
+  Learning: "[NEW]",
+};
+
+const getLanguageColor = (language: string): string => {
+  const colors: Record<string, string> = {
+    JavaScript: "text-yellow-400",
+    TypeScript: "text-blue-400",
+    Python: "text-green-400",
+    PHP: "text-purple-400",
+    Shell: "text-gray-400",
+    HTML: "text-orange-400",
+    CSS: "text-blue-300",
+    Unknown: "text-gray-500",
+  };
+  return colors[language] || "text-gray-500";
+};
+
+// Extend Window interface
+declare global {
+  interface Window {
+    switchTab: (tab: string) => void;
+    loadGitHubRepos: () => void;
+  }
+}
+---
+
+<section
+  id="skills-projects"
+  class="px-4 py-12 font-mono text-green-400 md:px-6 md:py-20"
+>
+  <div class="mx-auto max-w-6xl">
+    <!-- Mobile Header -->
+    <div class="mb-8 block text-center md:hidden">
+      <h2 class="mb-4 text-xl text-white">Skills & Projects</h2>
+      <p class="text-sm text-gray-400">My technical toolkit and latest work</p>
+    </div>
+
+    <!-- Desktop Terminal Header -->
+    <div class="mb-8 hidden md:block">
+      <h2 class="mb-4 text-2xl select-none lg:text-3xl">
+        <span class="text-white">$</span> ls -la /home/malvin/
+      </h2>
+      <div class="mb-6 text-sm text-gray-500">
+        <p>total {Object.keys(skills).length}</p>
+        <p>drwxr-xr-x 2 malvin malvin 4096 Jan 26 15:30 skills/</p>
+        <p>drwxr-xr-x 2 malvin malvin 4096 Jan 26 15:30 projects/</p>
+      </div>
+    </div>
+
+    <!-- Terminal Tabs -->
+    <div class="mb-8">
+      <div class="flex border-b border-gray-800">
+        <button
+          id="skills-tab"
+          class="tab-active inline-flex items-center gap-1 border-b-2 border-green-400 px-4 py-2 align-middle text-sm text-green-400 transition-all duration-200 hover:bg-green-400/10"
+          onclick="switchTab('skills')"
+        >
+          <Icon size={16} name="mdi:folder" /> skills/
+        </button>
+
+        <button
+          id="projects-tab"
+          class="inline-flex items-center gap-1 border-b-2 border-transparent px-4 py-2 align-middle text-sm text-gray-400 transition-all duration-200 hover:bg-green-400/10 hover:text-green-400"
+          onclick="switchTab('projects')"
+        >
+          <Icon size={16} name="mdi:folder" /> projects/
+        </button>
+      </div>
+    </div>
+
+    <!-- Skills Content -->
+    <div
+      id="skills-content"
+      class="tab-content transition-opacity duration-300 ease-in-out"
+    >
+      <!-- Mobile Skills -->
+      <div class="block md:hidden">
+        <div class="grid grid-cols-1 gap-4">
+          {
+            Object.entries(skills).map(([category, items]) => (
+              <div class="border border-gray-800 bg-[#111111] p-4 active:scale-[0.98] active:bg-[#1a1a1a]">
+                <h3 class="mb-3 flex items-center gap-2 text-lg font-bold text-green-300">
+                  <Icon
+                    name={
+                      category === "Languages"
+                        ? "mdi:code-braces"
+                        : category === "Databases"
+                          ? "mdi:database"
+                          : category === "DevOps"
+                            ? "mdi:server"
+                            : category === "Web"
+                              ? "mdi:web"
+                              : "mdi:book-open-page-variant"
+                    }
+                    size={24}
+                    class="text-green-300"
+                  />
+                  {category}
+                </h3>
+
+                <div class="flex flex-wrap gap-2">
+                  {items.map((skill: string) => (
+                    <span class="rounded-sm border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-green-200 transition-colors hover:text-white">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Desktop Skills -->
+      <div class="hidden md:block">
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            Object.entries(skills).map(([category, items]) => (
+              <div class="group border border-gray-800 bg-[#0a0a0a] p-4 transition-colors hover:border-green-700 hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+                <div class="mb-4 flex items-center gap-2 text-green-300">
+                  <span class="text-green-400">
+                    {terminalIcons[category as keyof typeof skills]}
+                  </span>
+                  <span class="font-bold">{category.toLowerCase()}/</span>
+                </div>
+                <div class="space-y-1">
+                  <div class="mb-2 text-xs text-gray-500">
+                    $ ls {category.toLowerCase()}/
+                  </div>
+                  {items.map((skill: string) => (
+                    <div class="flex cursor-default items-center gap-2 text-sm transition-colors hover:text-white">
+                      <span class="w-4 text-green-600">-</span>
+                      <span class="w-16 text-xs text-gray-400">
+                        {(Math.random() * 100).toFixed(0).padStart(3, "0")}K
+                      </span>
+                      <span class="text-green-200 hover:text-white">
+                        {skill.toLowerCase().replace(/[^a-z0-9]/g, "_")}.
+                        {category === "Languages"
+                          ? "lang"
+                          : category === "Databases"
+                            ? "db"
+                            : category === "DevOps"
+                              ? "sys"
+                              : category === "Web"
+                                ? "web"
+                                : "learn"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div class="mt-4 border-t border-gray-800 pt-3 text-xs text-gray-500">
+                  <span>
+                    {items.length} {items.length === 1 ? "skill" : "skills"}
+                  </span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Content -->
+    <div
+      id="projects-content"
+      class="tab-content hidden transition-opacity duration-300 ease-in-out"
+    >
+      <!-- Actual Projects -->
+      <div id="projects-data">
+        <!-- Mobile Projects -->
+        <div class="block md:hidden">
+          <div id="mobile-repos" class="grid grid-cols-1 gap-4">
+            <!-- Repos will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Desktop Projects -->
+        <div class="hidden md:block">
+          <div
+            id="desktop-repos"
+            class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          >
+            <!-- Repos will be loaded here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Error State -->
+      <div id="projects-error" class="hidden py-8 text-center">
+        <p class="mb-2 text-red-400">Failed to load repositories</p>
+        <p class="text-sm text-gray-400">
+          GitHub API may be temporarily unavailable
+        </p>
+        <button
+          onclick="loadGitHubRepos()"
+          class="mt-4 border border-green-700 px-4 py-2 text-green-400 transition-colors hover:bg-green-700 hover:text-black"
+        >
+          Try Again
+        </button>
+      </div>
+    </div>
+
+    <!-- Terminal Footer -->
+    <div class="mt-8 hidden text-sm text-gray-500 md:block">
+      <p>
+        $ echo "Skills: {Object.values(skills).flat().length} | Projects: <span
+          id="project-count">loading...</span
+        >"
+      </p>
+      <p class="text-green-400">
+        Skills: {Object.values(skills).flat().length} | Projects: <span
+          id="project-count-display">loading...</span
+        >
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  let reposLoaded = false;
+  let repos: any[] = [];
+
+  function switchTab(tab: string): void {
+    // Update tab buttons
+    const skillsTab = document.getElementById("skills-tab");
+    const projectsTab = document.getElementById("projects-tab");
+    const skillsContent = document.getElementById("skills-content");
+    const projectsContent = document.getElementById("projects-content");
+
+    if (!skillsTab || !projectsTab || !skillsContent || !projectsContent) {
+      return;
+    }
+
+    if (tab === "skills") {
+      skillsTab.classList.add("border-green-400", "text-green-400");
+      skillsTab.classList.remove("border-transparent", "text-gray-400");
+      projectsTab.classList.add("border-transparent", "text-gray-400");
+      projectsTab.classList.remove("border-green-400", "text-green-400");
+
+      skillsContent.classList.remove("hidden");
+      projectsContent.classList.add("hidden");
+    } else {
+      projectsTab.classList.add("border-green-400", "text-green-400");
+      projectsTab.classList.remove("border-transparent", "text-gray-400");
+      skillsTab.classList.add("border-transparent", "text-gray-400");
+      skillsTab.classList.remove("border-green-400", "text-green-400");
+
+      projectsContent.classList.remove("hidden");
+      skillsContent.classList.add("hidden");
+    }
+  }
+
+  async function loadGitHubRepos(): Promise<void> {
+    const dataElement = document.getElementById("projects-data");
+    const errorElement = document.getElementById("projects-error");
+
+    if (!dataElement || !errorElement) return;
+
+    // Hide error state
+    errorElement.classList.add("hidden");
+
+    try {
+      const response = await fetch("/api/github");
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const allRepos = await response.json();
+
+      if (!Array.isArray(allRepos)) {
+        throw new Error("Invalid response format");
+      }
+
+      repos = allRepos
+        .filter((repo: any) => !repo.fork && !repo.archived)
+        .sort(
+          (a: any, b: any) =>
+            new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
+        )
+        .slice(0, 6)
+        .map((repo: any) => ({
+          name: repo.name,
+          description: repo.description || "No description available",
+          language: repo.language || "Unknown",
+          stars: repo.stargazers_count,
+          forks: repo.forks_count,
+          updated: new Date(repo.updated_at).toLocaleDateString(),
+          url: repo.html_url,
+          topics: repo.topics || [],
+        }));
+
+      renderRepos();
+      reposLoaded = true;
+
+      // Update project count
+      const countElements = document.querySelectorAll(
+        "#project-count, #project-count-display",
+      );
+      countElements.forEach((el) => {
+        if (el) el.textContent = repos.length.toString();
+      });
+
+      // Show data
+      dataElement.classList.remove("hidden");
+    } catch (error) {
+      console.error("Failed to load GitHub repos:", error);
+
+      // Show error state
+      errorElement.classList.remove("hidden");
+
+      // Update project count to show error
+      const countElements = document.querySelectorAll(
+        "#project-count, #project-count-display",
+      );
+      countElements.forEach((el) => {
+        if (el) el.textContent = "error";
+      });
+    }
+  }
+
+  function getLanguageColor(language: string): string {
+    const colors: Record<string, string> = {
+      JavaScript: "text-yellow-400",
+      TypeScript: "text-blue-400",
+      Python: "text-green-400",
+      PHP: "text-purple-400",
+      Shell: "text-gray-400",
+      HTML: "text-orange-400",
+      CSS: "text-blue-300",
+      Unknown: "text-gray-500",
+    };
+    return colors[language] || "text-gray-500";
+  }
+
+  function renderRepos(): void {
+    const mobileContainer = document.getElementById("mobile-repos");
+    const desktopContainer = document.getElementById("desktop-repos");
+
+    if (!mobileContainer || !desktopContainer) return;
+
+    // Mobile repos
+    mobileContainer.innerHTML = repos
+      .map(
+        (repo) => `
+      <div class="border border-gray-800 bg-[#111111] p-4 active:scale-[0.98] active:bg-[#1a1a1a]">
+        <div class="mb-2 flex items-center justify-between">
+          <h3 class="truncate pr-2 text-lg font-bold text-green-300">${repo.name}</h3>
+          <div class="flex items-center gap-2 text-xs">
+            <div class="h-2 w-2 rounded-full bg-current ${getLanguageColor(repo.language)}"></div>
+            <span class="text-gray-400">${repo.language}</span>
+          </div>
+        </div>
+        <p class="mb-3 text-sm leading-relaxed text-gray-300">${repo.description}</p>
+        ${
+          repo.topics.length > 0
+            ? `
+          <div class="mb-4">
+            <div class="flex flex-wrap gap-1">
+              ${repo.topics
+                .slice(0, 3)
+                .map(
+                  (topic: string) => `
+                <span class="rounded-sm border border-gray-700 bg-gray-900 px-2 py-1 text-xs text-green-200">${topic}</span>
+              `,
+                )
+                .join("")}
+            </div>
+          </div>
+        `
+            : ""
+        }
+        <a href="${repo.url}" target="_blank" class="flex min-h-[44px] w-full items-center justify-center gap-2 bg-green-700 px-4 py-2 font-medium text-black transition-colors hover:bg-green-600">
+          View Code →
+        </a>
+      </div>
+    `,
+      )
+      .join("");
+
+    // Desktop repos
+    desktopContainer.innerHTML = repos
+      .map(
+        (repo) => `
+      <div class="group border border-gray-800 bg-[#0a0a0a] p-4 transition-all duration-300 hover:border-green-700 hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+        <div class="mb-3 flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="text-gray-500">rwxr-xr-x</span>
+            <span class="text-green-400">1</span>
+            <span class="text-gray-400">malvin</span>
+          </div>
+          <span class="text-xs text-gray-500">${repo.updated}</span>
+        </div>
+        <div class="mb-3">
+          <h3 class="flex items-center gap-2 font-bold text-green-300">
+            <span class="text-green-600">📁</span>
+            <span class="truncate transition-colors hover:text-white">${repo.name}</span>
+          </h3>
+        </div>
+        <div class="mb-4">
+          <p class="mb-1 text-xs text-gray-500">$ cat README.md</p>
+          <p class="text-sm leading-relaxed text-gray-300">${repo.description}</p>
+        </div>
+        ${
+          repo.topics.length > 0
+            ? `
+          <div class="mb-4">
+            <p class="mb-2 text-xs text-gray-500">$ grep -r "dependencies"</p>
+            <div class="flex flex-wrap gap-1">
+              ${repo.topics
+                .slice(0, 4)
+                .map(
+                  (topic: string) => `
+                <span class="border border-gray-700 bg-gray-900 px-2 py-1 text-xs text-green-200">${topic}</span>
+              `,
+                )
+                .join("")}
+            </div>
+          </div>
+        `
+            : ""
+        }
+        <div class="mb-4 flex items-center gap-4 text-xs">
+          <div class="flex items-center gap-1">
+            <span class="h-2 w-2 rounded-full ${getLanguageColor(repo.language).replace("text-", "bg-")}"></span>
+            <span class="text-gray-400">${repo.language}</span>
+          </div>
+          ${
+            repo.stars > 0
+              ? `
+            <div class="flex items-center gap-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-gray-400">${repo.stars}</span>
+            </div>
+          `
+              : ""
+          }
+          ${
+            repo.forks > 0
+              ? `
+            <div class="flex items-center gap-1">
+              <span class="text-blue-400">🔀</span>
+              <span class="text-gray-400">${repo.forks}</span>
+            </div>
+          `
+              : ""
+          }
+        </div>
+        <a href="${repo.url}" target="_blank" class="flex min-h-[44px] items-center justify-center gap-1 border border-green-700 px-3 py-2 text-xs text-green-400 transition-all hover:bg-green-700 hover:text-black">
+          <span>📂</span> open
+        </a>
+      </div>
+    `,
+      )
+      .join("");
+  }
+
+  // Auto-load GitHub repos when page loads
+  document.addEventListener("DOMContentLoaded", () => {
+    loadGitHubRepos();
+  });
+
+  // Make functions globally available
+  window.switchTab = switchTab;
+  window.loadGitHubRepos = loadGitHubRepos;
+</script>
+
+<style>
+  /* Desktop hover effects with blinking cursor */
+  @media (min-width: 768px) {
+    .group:hover::after {
+      content: "_";
+      animation: blink 1s infinite;
+      color: #22c55e;
+      margin-left: 4px;
+    }
+
+    @keyframes blink {
+      0%,
+      50% {
+        opacity: 1;
+      }
+      51%,
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+</style>

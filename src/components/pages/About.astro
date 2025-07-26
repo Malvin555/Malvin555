@@ -1,0 +1,235 @@
+---
+import { Icon } from "astro-icon/components";
+const systemInfo = [
+  { key: "USER", value: "malvin" },
+  { key: "ROLE", value: "full-stack developer" },
+  { key: "FOCUS", value: "web dev, linux, cybersecurity" },
+  { key: "STATUS", value: "learning & building" },
+];
+
+const desktopSystemInfo = [
+  { key: "USER", value: "malvin" },
+  { key: "SHELL", value: "/bin/bash" },
+  { key: "HOME", value: "/home/malvin" },
+  { key: "LANG", value: "en_US.UTF-8" },
+  { key: "EDITOR", value: "vim" },
+  { key: "PATH", value: "/usr/local/bin:/usr/bin:/bin" },
+];
+
+const processes = [
+  { pid: "1337", cmd: "learning_cybersecurity", cpu: "15.2", mem: "8.1" },
+  { pid: "2048", cmd: "docker_containers", cpu: "12.8", mem: "6.4" },
+  { pid: "4096", cmd: "web_development", cpu: "25.6", mem: "12.3" },
+  { pid: "8192", cmd: "linux_exploration", cpu: "18.9", mem: "9.7" },
+];
+
+const mobileHighlights = [
+  {
+    icon: "mdi:rocket",
+    title: "Self-Taught",
+    desc: "Passionate about continuous learning",
+  },
+  {
+    icon: "mdi:ballot-outline",
+    title: "Full-Stack",
+    desc: "Web development & system administration",
+  },
+  {
+    icon: "mdi:shield",
+    title: "Security",
+    desc: "Exploring cybersecurity fundamentals",
+  },
+  {
+    icon: "mdi:linux",
+    title: "Linux",
+    desc: "Container tech & system optimization",
+  },
+];
+---
+
+<section
+  id="about"
+  class="bg-black px-4 py-12 font-mono text-green-400 md:px-6 md:py-20"
+>
+  <div class="mx-auto max-w-6xl">
+    <!-- Mobile Header -->
+    <div class="mb-8 block text-center md:hidden">
+      <h2 class="mb-4 text-xl text-white">About Me</h2>
+      <p class="text-sm text-gray-400">
+        Full-Stack Developer & Linux Enthusiast
+      </p>
+    </div>
+
+    <!-- Desktop Terminal Header -->
+    <div class="mb-8 hidden md:block">
+      <h2 class="mb-4 text-2xl select-none lg:text-3xl">
+        <span class="text-white">$</span> cat /proc/self/status
+      </h2>
+    </div>
+
+    <!-- Mobile Content -->
+    <div class="block md:hidden">
+      <!-- Mobile Intro -->
+      <div class="mb-6 border border-gray-800 bg-[#111111] p-6">
+        <p class="mb-4 leading-relaxed text-gray-300">
+          Self-taught developer with an insatiable curiosity for technology.
+          Started this journey driven by passion, now diving deep into web
+          development, Linux systems, and cybersecurity fundamentals.
+        </p>
+        <p class="leading-relaxed text-gray-300">
+          I believe in continuous learning — whether it's mastering new
+          frameworks, exploring container technologies, or picking up human
+          languages.
+        </p>
+      </div>
+
+      <!-- Mobile Highlights -->
+      <div class="mb-6 grid grid-cols-2 gap-4">
+        {
+          mobileHighlights.map((highlight) => (
+            <div class="border border-gray-800 bg-[#111111] p-4 text-center">
+              <div class="mb-2 text-2xl">
+                <Icon
+                  name={highlight.icon}
+                  size={24}
+                  class="mx-auto block text-green-300"
+                />
+              </div>
+              <h3 class="mb-1 text-sm font-bold text-green-300">
+                {highlight.title}
+              </h3>
+              <p class="text-xs leading-tight text-gray-400">
+                {highlight.desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Mobile System Info -->
+      <div class="border border-gray-800 bg-[#111111] p-4">
+        <h3 class="mb-4 flex items-center gap-2 text-green-300">
+          <Icon name="mdi:info-circle" size={24} class="text-green-300" /> Quick
+          Info
+        </h3>
+        <div class="space-y-2 text-sm">
+          {
+            systemInfo.map((info) => (
+              <div class="flex justify-between">
+                <span class="text-gray-400">{info.key}:</span>
+                <span class="text-right text-green-200">{info.value}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Content -->
+    <div class="hidden md:block">
+      <div class="grid gap-8 lg:grid-cols-2">
+        <!-- System Info -->
+        <div class="border border-gray-800 bg-[#0a0a0a] p-4">
+          <h3 class="mb-4 flex items-center gap-2 text-green-300">
+            <Icon name="mdi:information" size={24} class="text-green-300" /> System
+            Information
+          </h3>
+          <div class="space-y-2 text-sm">
+            {
+              desktopSystemInfo.map((info) => (
+                <div class="flex">
+                  <span class="w-16 text-gray-400">{info.key}:</span>
+                  <span class="text-green-200">{info.value}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Process List -->
+        <div class="border border-gray-800 bg-[#0a0a0a] p-4">
+          <h3 class="mb-4 flex items-center gap-2 text-green-300">
+            <Icon name="mdi:flash" size={24} class="text-green-300" /> Active Processes
+          </h3>
+          <div class="text-xs">
+            <div class="mb-2 flex text-gray-500">
+              <span class="w-12">PID</span>
+              <span class="flex-1">COMMAND</span>
+              <span class="w-12">%CPU</span>
+              <span class="w-12">%MEM</span>
+            </div>
+            {
+              processes.map((proc) => (
+                <div class="flex text-green-200 transition-colors hover:text-white">
+                  <span class="w-12 text-gray-400">{proc.pid}</span>
+                  <span class="flex-1">{proc.cmd}</span>
+                  <span class="w-12 text-yellow-400">{proc.cpu}</span>
+                  <span class="w-12 text-blue-400">{proc.mem}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="mt-8 border border-gray-800 bg-[#0a0a0a] p-6">
+        <div class="mb-4">
+          <p class="mb-2 text-xs text-gray-500">$ cat ~/.profile</p>
+        </div>
+
+        <div class="space-y-4 text-sm text-gray-300">
+          <p class="leading-relaxed">
+            <span class="text-green-400"># About Malvin</span><br />
+            Self-taught developer with an insatiable curiosity for technology. Started
+            this journey driven by passion, now diving deep into web development,
+            Linux systems, and cybersecurity fundamentals.
+          </p>
+
+          <p class="leading-relaxed">
+            <span class="text-green-400"># Philosophy</span><br />
+            I believe in continuous learning — whether it's mastering new frameworks,
+            exploring container technologies, or picking up human languages. Every
+            challenge is an opportunity to grow.
+          </p>
+
+          <p class="leading-relaxed">
+            <span class="text-green-400"># Current Focus</span><br />
+            When not coding, you'll find me experimenting with Linux distributions,
+            orchestrating containers with Docker/Podman, or studying cybersecurity
+            concepts. Always building, always learning.
+          </p>
+        </div>
+      </div>
+
+      <!-- Desktop Terminal Footer -->
+      <div class="mt-6 text-sm text-gray-500">
+        <p>$ uptime</p>
+        <p class="text-green-400">
+          Learning since 2020, currently online and ready to collaborate
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Desktop hover effects */
+  @media (min-width: 768px) {
+    .bg-\[#0a0a0a\]:hover {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 767px) {
+    .bg-\[#111111\] {
+      background: #111111;
+    }
+
+    .bg-\[#111111\]:active {
+      background: #1a1a1a;
+      transform: scale(0.98);
+    }
+  }
+</style>
