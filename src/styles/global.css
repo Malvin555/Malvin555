@@ -1,34 +1,28 @@
 @import "tailwindcss";
+@theme {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-primary: oklch(79.2% 0.209 151.711); /* Green 400 */
+  --color-primary-dark: oklch(72.3% 0.219 149.579); /* Green 500 */
+  --color-secondary: oklch(70.7% 0.022 261.325); /* Gray 400 */
+  --color-secondary-dark: oklch(55.1% 0.027 264.364); /* Gray 500 */
+  --color-surface: oklch(70.7% 0.022 261.325); /* Gray 300 */
+  --color-tertiary: oklch(27.8% 0.033 256.848); /* Gray 800 */
+  --color-primary-bright: oklch(87.1% 0.15 154.449); /* Green 300 */
+  --color-muted-dark: oklch(44.8% 0.119 151.328); /* Green 700 */
+  --color-bright: oklch(92.5% 0.084 155.995); /* Green 200 */
+  --color-min: #0a0a0a;
+  --color-gin: #111111;
 
-@theme inline {
-  /* Primary Colors */
-  --primary: #22c55e;
-  --primary-dark: #16a34a;
-  --primary-light: #4ade80;
-  --primary-muted: #15803d;
+  --bg-terminal-pattern: radial-gradient(#00ff00 1px, transparent 1px);
+  --bg-terminal-pattern-size: 20px 20px;
+}
 
-  /* Background Colors */
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-tertiary: #111111;
-  --bg-accent: #1a1a1a;
-
-  /* Text Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #d1d5db;
-  --text-muted: #9ca3af;
-  --text-dim: #6b7280;
-  --text-faint: #4b5563;
-
-  /* Border Colors */
-  --border-primary: var(--primary);
-  --border-secondary: #374151;
-  --border-muted: #1f2937;
-
-  /* Status Colors */
-  --status-online: var(--primary);
-  --status-active: #3b82f6;
-  --status-available: #eab308;
-  --status-idle: #6b7280;
-  --status-error: #ef4444;
+@layer utilities {
+  .bg-terminal-pattern {
+    background-image: radial-gradient(#2e4632 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-repeat: repeat;
+    z-index: -20;
+  }
 }

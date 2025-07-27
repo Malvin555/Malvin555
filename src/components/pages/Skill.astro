@@ -46,9 +46,9 @@ const getLanguageColor = (language: string): string => {
   const colors: Record<string, string> = {
     JavaScript: "text-yellow-400",
     TypeScript: "text-blue-400",
-    Python: "text-green-400",
+    Python: "text-primary",
     PHP: "text-purple-400",
-    Shell: "text-gray-400",
+    Shell: "text-secondary",
     HTML: "text-orange-400",
     CSS: "text-blue-300",
     Unknown: "text-gray-500",
@@ -67,13 +67,13 @@ declare global {
 
 <section
   id="skills-projects"
-  class="px-4 py-12 font-mono text-green-400 md:px-6 md:py-20"
+  class="text-primary bg-terminal-pattern px-4 py-12 font-mono md:px-6 md:py-20"
 >
   <div class="mx-auto max-w-6xl">
     <!-- Mobile Header -->
     <div class="mb-8 block text-center md:hidden">
-      <h2 class="mb-4 text-xl text-white">Skills & Projects</h2>
-      <p class="text-sm text-gray-400">My technical toolkit and latest work</p>
+      <h2 class="text-[white mb-4 text-xl">Skills & Projects</h2>
+      <p class="text-secondary text-sm">My technical toolkit and latest work</p>
     </div>
 
     <!-- Desktop Terminal Header -->
@@ -93,7 +93,7 @@ declare global {
       <div class="flex border-b border-gray-800">
         <button
           id="skills-tab"
-          class="tab-active inline-flex items-center gap-1 border-b-2 border-green-400 px-4 py-2 align-middle text-sm text-green-400 transition-all duration-200 hover:bg-green-400/10"
+          class="tab-active text-primary inline-flex items-center gap-1 border-b-2 border-green-400 px-4 py-2 align-middle text-sm transition-all duration-200 hover:bg-green-400/10"
           onclick="switchTab('skills')"
         >
           <Icon size={16} name="mdi:folder" /> skills/
@@ -101,7 +101,7 @@ declare global {
 
         <button
           id="projects-tab"
-          class="inline-flex items-center gap-1 border-b-2 border-transparent px-4 py-2 align-middle text-sm text-gray-400 transition-all duration-200 hover:bg-green-400/10 hover:text-green-400"
+          class="hover:text-primary text-secondary inline-flex items-center gap-1 border-b-2 border-transparent px-4 py-2 align-middle text-sm transition-all duration-200 hover:bg-green-400/10"
           onclick="switchTab('projects')"
         >
           <Icon size={16} name="mdi:folder" /> projects/
@@ -157,9 +157,9 @@ declare global {
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {
             Object.entries(skills).map(([category, items]) => (
-              <div class="group border border-gray-800 bg-[#0a0a0a] p-4 transition-colors hover:border-green-700 hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+              <div class="group hover:border-muted-dark bg-min border border-gray-800 p-4 transition-colors hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
                 <div class="mb-4 flex items-center gap-2 text-green-300">
-                  <span class="text-green-400">
+                  <span class="text-primary">
                     {terminalIcons[category as keyof typeof skills]}
                   </span>
                   <span class="font-bold">{category.toLowerCase()}/</span>
@@ -171,7 +171,7 @@ declare global {
                   {items.map((skill: string) => (
                     <div class="flex cursor-default items-center gap-2 text-sm transition-colors hover:text-white">
                       <span class="w-4 text-green-600">-</span>
-                      <span class="w-16 text-xs text-gray-400">
+                      <span class="text-secondary w-16 text-xs">
                         {(Math.random() * 100).toFixed(0).padStart(3, "0")}K
                       </span>
                       <span class="text-green-200 hover:text-white">
@@ -229,12 +229,12 @@ declare global {
       <!-- Error State -->
       <div id="projects-error" class="hidden py-8 text-center">
         <p class="mb-2 text-red-400">Failed to load repositories</p>
-        <p class="text-sm text-gray-400">
+        <p class="text-secondary text-sm">
           GitHub API may be temporarily unavailable
         </p>
         <button
           onclick="loadGitHubRepos()"
-          class="mt-4 border border-green-700 px-4 py-2 text-green-400 transition-colors hover:bg-green-700 hover:text-black"
+          class="text-primary border-muted-dark hover:bg-muted-dark mt-4 border px-4 py-2 transition-colors hover:text-black"
         >
           Try Again
         </button>
@@ -248,7 +248,7 @@ declare global {
           id="project-count">loading...</span
         >"
       </p>
-      <p class="text-green-400">
+      <p class="text-primary">
         Skills: {Object.values(skills).flat().length} | Projects: <span
           id="project-count-display">loading...</span
         >
@@ -273,18 +273,18 @@ declare global {
     }
 
     if (tab === "skills") {
-      skillsTab.classList.add("border-green-400", "text-green-400");
-      skillsTab.classList.remove("border-transparent", "text-gray-400");
-      projectsTab.classList.add("border-transparent", "text-gray-400");
-      projectsTab.classList.remove("border-green-400", "text-green-400");
+      skillsTab.classList.add("border-green-400", "text-primary");
+      skillsTab.classList.remove("border-transparent", "text-secondary");
+      projectsTab.classList.add("border-transparent", "text-secondary");
+      projectsTab.classList.remove("border-green-400", "text-primary");
 
       skillsContent.classList.remove("hidden");
       projectsContent.classList.add("hidden");
     } else {
-      projectsTab.classList.add("border-green-400", "text-green-400");
-      projectsTab.classList.remove("border-transparent", "text-gray-400");
-      skillsTab.classList.add("border-transparent", "text-gray-400");
-      skillsTab.classList.remove("border-green-400", "text-green-400");
+      projectsTab.classList.add("border-green-400", "text-primary");
+      projectsTab.classList.remove("border-transparent", "text-secondary");
+      skillsTab.classList.add("border-transparent", "text-secondary");
+      skillsTab.classList.remove("border-green-400", "text-primary");
 
       projectsContent.classList.remove("hidden");
       skillsContent.classList.add("hidden");
@@ -364,9 +364,9 @@ declare global {
     const colors: Record<string, string> = {
       JavaScript: "text-yellow-400",
       TypeScript: "text-blue-400",
-      Python: "text-green-400",
+      Python: "text-primary",
       PHP: "text-purple-400",
-      Shell: "text-gray-400",
+      Shell: "text-secondary",
       HTML: "text-orange-400",
       CSS: "text-blue-300",
       Unknown: "text-gray-500",
@@ -389,7 +389,7 @@ declare global {
           <h3 class="truncate pr-2 text-lg font-bold text-green-300">${repo.name}</h3>
           <div class="flex items-center gap-2 text-xs">
             <div class="h-2 w-2 rounded-full bg-current ${getLanguageColor(repo.language)}"></div>
-            <span class="text-gray-400">${repo.language}</span>
+            <span class="text-secondary">${repo.language}</span>
           </div>
         </div>
         <p class="mb-3 text-sm leading-relaxed text-gray-300">${repo.description}</p>
@@ -411,7 +411,7 @@ declare global {
         `
             : ""
         }
-        <a href="${repo.url}" target="_blank" class="flex min-h-[44px] w-full items-center justify-center gap-2 bg-green-700 px-4 py-2 font-medium text-black transition-colors hover:bg-green-600">
+        <a href="${repo.url}" target="_blank" class="flex min-h-[44px] w-full items-center justify-center gap-2 bg-muted-dark px-4 py-2 font-medium text-black transition-colors hover:bg-green-600">
           View Code →
         </a>
       </div>
@@ -423,12 +423,12 @@ declare global {
     desktopContainer.innerHTML = repos
       .map(
         (repo) => `
-      <div class="group border border-gray-800 bg-[#0a0a0a] p-4 transition-all duration-300 hover:border-green-700 hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+      <div class="group border border-gray-800 bg-min p-4 transition-all duration-300 hover:border-muted-dark hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
         <div class="mb-3 flex items-center justify-between">
           <div class="flex items-center gap-2 text-xs">
             <span class="text-gray-500">rwxr-xr-x</span>
-            <span class="text-green-400">1</span>
-            <span class="text-gray-400">malvin</span>
+            <span class="text-primary">1</span>
+            <span class="text-secondary">malvin</span>
           </div>
           <span class="text-xs text-gray-500">${repo.updated}</span>
         </div>
@@ -464,14 +464,14 @@ declare global {
         <div class="mb-4 flex items-center gap-4 text-xs">
           <div class="flex items-center gap-1">
             <span class="h-2 w-2 rounded-full ${getLanguageColor(repo.language).replace("text-", "bg-")}"></span>
-            <span class="text-gray-400">${repo.language}</span>
+            <span class="text-secondary">${repo.language}</span>
           </div>
           ${
             repo.stars > 0
               ? `
             <div class="flex items-center gap-1">
               <span class="text-yellow-400">⭐</span>
-              <span class="text-gray-400">${repo.stars}</span>
+              <span class="text-secondary">${repo.stars}</span>
             </div>
           `
               : ""
@@ -481,13 +481,13 @@ declare global {
               ? `
             <div class="flex items-center gap-1">
               <span class="text-blue-400">🔀</span>
-              <span class="text-gray-400">${repo.forks}</span>
+              <span class="text-secondary">${repo.forks}</span>
             </div>
           `
               : ""
           }
         </div>
-        <a href="${repo.url}" target="_blank" class="flex min-h-[44px] items-center justify-center gap-1 border border-green-700 px-3 py-2 text-xs text-green-400 transition-all hover:bg-green-700 hover:text-black">
+        <a href="${repo.url}" target="_blank" class="flex min-h-[44px] items-center justify-center gap-1 border border-muted-dark px-3 py-2 text-xs text-primary transition-all hover:bg-muted-dark hover:text-black">
           <span>📂</span> open
         </a>
       </div>

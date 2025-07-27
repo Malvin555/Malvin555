@@ -30,6 +30,15 @@ const contactMethods = [
     download: true
   },
   {
+    method: "Telegram",
+    command: "https://t.me/malvin555",
+    description: "Connect with me",
+    icon: "mdi:telegram",
+    mobileIcon: "mdi:telegram",
+    status: "updated",
+    primary: true,
+  },
+  {
     method: "linkedin",
     command: "https://linkedin.com/in/malvin555",
     description: "Professional network",
@@ -65,13 +74,13 @@ const quickActions = [
 ];
 ---
 
-<section id="contact" class="bg-black text-green-400 py-12 md:py-20 px-4 md:px-6 font-mono">
+<section id="contact" class="bg-black text-primary py-12 md:py-20 px-4 md:px-6 font-mono">
   <div class="max-w-6xl mx-auto">
 
     <!-- Mobile Header -->
     <div class="block md:hidden mb-8 text-center">
       <h2 class="text-xl mb-4 text-white">Get In Touch</h2>
-      <p class="text-sm text-gray-400 mb-6">Let's build something amazing together!</p>
+      <p class="text-sm text-secondary mb-6">Let's build something amazing together!</p>
     </div>
 
     <!-- Desktop Terminal Header -->
@@ -79,7 +88,7 @@ const quickActions = [
       <h2 class="text-2xl lg:text-3xl mb-4 select-none">
         <span class="text-white">$</span> contact --help
       </h2>
-      <div class="text-sm text-gray-500 mb-6">
+      <div class="text-sm text-secondary-dark mb-6">
         <p>USAGE: contact [OPTIONS]</p>
         <p>Connect with malvin for collaboration, questions, or just to say hi!</p>
       </div>
@@ -94,24 +103,24 @@ const quickActions = [
             href={contact.command}
             target={contact.download ? "_self" : "_blank"}
             download={contact.download}
-            class="bg-[#111111] border border-gray-800 p-6 hover:border-green-700 transition-all active:scale-95  relative group min-h-[44px] flex items-center justify-center md:min-h-0 md:block first:border-green-500"
+            class="bg-gin border border-tertiary p-6 hover:border-muted-dark transition-all active:scale-95  relative group min-h-[44px] flex items-center justify-center md:min-h-0 md:block first:border-primary-dark"
             onclick={contact.copyable ? `copyToClipboard('${contact.command}'); return false;` : ''}
           >
             <div class="flex items-center">
               <div class="mx-3"><Icon name={contact.mobileIcon} size={24} /></div>
               <div class="flex-1">
-                <h3 class="text-green-300 font-bold text-lg capitalize">{contact.method}</h3>
-                <p class="text-gray-400 text-sm">{contact.description}</p>
+                <h3 class="text-primary-bright font-bold text-lg capitalize">{contact.method}</h3>
+                <p class="text-secondary text-sm">{contact.description}</p>
                 {contact.status === 'updated' && (
-                  <span class="text-xs text-green-400 mt-1 block">• Recently updated</span>
+                  <span class="text-xs text-primary mt-1 block">• Recently updated</span>
                 )}
               </div>
-              <div class="text-green-400 text-xl">
+              <div class="text-primary text-xl">
                 {contact.download ? '↓' : contact.copyable ? '📋' : '→'}
               </div>
             </div>
             {contact.copyable && (
-              <div class="absolute top-2 right-2 bg-green-700 text-black text-xs px-2 py-1 rounded opacity-0 group-active:opacity-100 transition-opacity">
+              <div class="absolute top-2 right-2 bg-muted-dark text-black text-xs px-2 py-1 rounded opacity-0 group-active:opacity-100 transition-opacity">
                 Tap to copy
               </div>
             )}
@@ -121,16 +130,16 @@ const quickActions = [
 
       <!-- Quick Actions -->
       <div class="mb-6">
-        <h3 class="text-green-300 font-bold mb-4 text-center">Quick Actions</h3>
+        <h3 class="text-primary-bright font-bold mb-4 text-center">Quick Actions</h3>
         <div class="grid grid-cols-1 gap-3">
           {quickActions.map(action => (
             <a
               href={action.link}
-              class="bg-[#0a0a0a] border border-gray-700 p-4 hover:border-green-600 transition-all text-center min-h-[44px] flex items-center justify-center"
+              class="bg-min border border-gray-700 p-4 hover:border-green-600 transition-all text-center min-h-[44px] flex items-center justify-center"
             >
               <div>
-                <h4 class="text-green-400 font-bold text-sm">{action.action}</h4>
-                <p class="text-gray-400 text-xs">{action.desc}</p>
+                <h4 class="text-primary font-bold text-sm">{action.action}</h4>
+                <p class="text-secondary text-xs">{action.desc}</p>
               </div>
             </a>
           ))}
@@ -143,34 +152,34 @@ const quickActions = [
           <a
             href={contact.command}
             target="_blank"
-            class="bg-[#111111] border border-gray-800 p-4 hover:border-green-700 transition-all active:scale-95 text-center  min-h-[44px] flex items-center justify-center"
+            class="bg-gin border border-tertiary p-4 hover:border-muted-dark transition-all active:scale-95 text-center  min-h-[44px] flex items-center justify-center"
             onclick={contact.copyable ? `copyToClipboard('${contact.command}'); return false;` : ''}
           >
             <div>
               <div class="text-2xl mb-2"><Icon name={contact.mobileIcon} class="mx-auto block" /></div>
-              <h3 class="text-green-300 font-bold text-sm capitalize mb-1">{contact.method}</h3>
-              <p class="text-gray-400 text-xs">{contact.description}</p>
+              <h3 class="text-primary-bright font-bold text-sm capitalize mb-1">{contact.method}</h3>
+              <p class="text-secondary text-xs">{contact.description}</p>
             </div>
           </a>
         ))}
       </div>
 
       <!-- Mobile CTA -->
-      <div class="bg-[#111111] border border-gray-800 p-6 text-center">
+      <div class="bg-gin border border-tertiary p-6 text-center">
         <p class="text-gray-300 mb-4">
           Ready to collaborate on your next project?
         </p>
         <div class="flex flex-col gap-3">
           <a
             href="mailto:malvin@example.com?subject=Let's Collaborate!"
-            class="bg-green-700 text-black px-6 py-3 font-bold hover:bg-green-600 transition-colors"
+            class="bg-muted-dark text-black px-6 py-3 font-bold hover:bg-green-600 transition-colors"
           >
             Let's Talk!
           </a>
           <a
             href="/docs/resume.pdf"
             download
-            class="border border-green-700 text-green-400 px-6 py-3 hover:bg-green-700 hover:text-black transition-colors"
+            class="border border-muted-dark text-primary px-6 py-3 hover:bg-muted-dark hover:text-black transition-colors"
           >
             Download Resume
           </a>
@@ -181,8 +190,8 @@ const quickActions = [
     <!-- Desktop Content -->
     <div class="hidden md:block">
       <!-- Help Options -->
-      <div class="mb-8 bg-[#0a0a0a] border border-gray-800 p-4">
-        <h3 class="text-green-300 mb-4">OPTIONS:</h3>
+      <div class="mb-8 bg-min border border-tertiary p-4">
+        <h3 class="text-primary-bright mb-4">OPTIONS:</h3>
         <div class="space-y-2 text-sm">
           {helpCommands.map(cmd => (
             <div class="flex items-start gap-4">
@@ -196,27 +205,27 @@ const quickActions = [
       <!-- Contact Methods Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {contactMethods.map(contact => (
-          <div class="bg-[#0a0a0a] border border-gray-800 p-4 hover:border-green-700 transition-all group md:hover:bg-gradient-to-br md:hover:from-[#0f0f0f] md:hover:to-[#1a1a1a] md:hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+          <div class="bg-min border border-tertiary p-4 hover:border-muted-dark transition-all group md:hover:bg-gradient-to-br md:hover:from-[#0f0f0f] md:hover:to-[#1a1a1a] md:hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
             <!-- Status Line -->
             <div class="flex items-center justify-between mb-3 text-xs">
               <div class="flex items-center gap-2">
-                <span class="text-green-400"><Icon name={contact.icon} size={16} /></span>
-                <span class="text-green-300">{contact.method}</span>
+                <span class="text-primary"><Icon name={contact.icon} size={16} /></span>
+                <span class="text-primary-bright">{contact.method}</span>
               </div>
               <div class="flex items-center gap-1">
                 <div class={`w-2 h-2 rounded-full ${
-                  contact.status === 'online' ? 'bg-green-400 animate-pulse' :
+                  contact.status === 'online' ? 'bg-primary animate-pulse' :
                   contact.status === 'active' ? 'bg-blue-400' :
                   contact.status === 'available' ? 'bg-yellow-400' :
-                  contact.status === 'updated' ? 'bg-green-500 animate-pulse' : 'bg-gray-400'
+                  contact.status === 'updated' ? 'bg-primary-dark animate-pulse' : 'bg-secondary'
                 }`}></div>
-                <span class="text-gray-500">{contact.status}</span>
+                <span class="text-secondary-dark">{contact.status}</span>
               </div>
             </div>
 
             <!-- Command -->
             <div class="mb-3">
-              <p class="text-xs text-gray-500 mb-1">$ connect --{contact.method}</p>
+              <p class="text-xs text-secondary-dark mb-1">$ connect --{contact.method}</p>
               <p class="text-sm text-gray-300">{contact.description}</p>
             </div>
 
@@ -225,10 +234,10 @@ const quickActions = [
               href={contact.command}
               target={contact.download ? "_self" : "_blank"}
               download={contact.download}
-              class="inline-flex items-center gap-2 text-xs border border-green-700 text-green-400 px-3 py-2 hover:bg-green-700 hover:text-black transition-all"
+              class="inline-flex items-center gap-2 text-xs border border-muted-dark text-primary px-3 py-2 hover:bg-muted-dark hover:text-black transition-all"
               onclick={contact.copyable ? `copyToClipboard('${contact.command}'); return false;` : ''}
             >
-              <div class="text-green-400 text-xl">
+              <div class="text-primary text-xl">
                 {contact.download ? (
                   <Icon name="mdi:download" class=" block mx-auto" size={10} />
                 ) : contact.copyable ? (
@@ -245,15 +254,15 @@ const quickActions = [
       </div>
 
       <!-- Quick Actions Desktop -->
-      <div class="mb-8 bg-[#0a0a0a] border border-gray-800 p-4">
-        <h3 class="text-green-300 mb-4 flex items-center gap-2">
+      <div class="mb-8 bg-min border border-tertiary p-4">
+        <h3 class="text-primary-bright mb-4 flex items-center gap-2">
           <span><Icon name="mdi:flash" class="block mx-auto" size={24} /></span> Quick Actions
         </h3>
         <div class="grid md:grid-cols-3 gap-4">
           {quickActions.map(action => (
-          <a href={action.link} class="action-card border border-gray-700 p-3 hover:border-green-600 hover:bg-green-700 transition-all text-center">
-            <h4 class="action-title text-green-400 font-bold text-sm mb-1">{action.action}</h4>
-            <p class="text-gray-400 text-xs">{action.desc}</p>
+          <a href={action.link} class="action-card border border-gray-700 p-3 hover:border-green-600 hover:bg-muted-dark transition-all text-center">
+            <h4 class="action-title text-primary font-bold text-sm mb-1">{action.action}</h4>
+            <p class="text-secondary text-xs">{action.desc}</p>
           </a>
 
 
@@ -262,31 +271,31 @@ const quickActions = [
       </div>
 
       <!-- Terminal Session -->
-      <div class="bg-[#0a0a0a] border border-gray-800 p-4 mb-8">
-        <h3 class="text-green-300 mb-4 flex items-center gap-2">
-          <span>💻</span> Interactive Session
+      <div class="bg-min border border-tertiary p-4 mb-8">
+        <h3 class="text-primary-bright mb-4 flex items-center gap-2">
+          <span><Icon name="mdi:terminal" class="block mx-auto" size={24} /></span> Interactive Session
         </h3>
         <div class="space-y-2 text-sm">
           <div class="flex items-center gap-2">
-            <span class="text-green-400">$</span>
+            <span class="text-primary">$</span>
             <span class="text-gray-300">ping malvin.dev</span>
           </div>
-          <div class="text-gray-400 ml-4">
+          <div class="text-secondary ml-4">
             PING malvin.dev: 64 bytes from malvin: icmp_seq=1 ttl=64 time=0.1ms<br/>
             --- malvin.dev ping statistics ---<br/>
             1 packets transmitted, 1 received, 0% packet loss
           </div>
           <div class="flex items-center gap-2 mt-4">
-            <span class="text-green-400">$</span>
+            <span class="text-primary">$</span>
             <span class="text-gray-300">echo "Ready to collaborate!"</span>
           </div>
           <div class="text-green-200 ml-4">Ready to collaborate!</div>
           <div class="flex items-center gap-2 mt-4">
-            <span class="text-green-400">$</span>
+            <span class="text-primary">$</span>
             <span class="text-gray-300">cat availability.txt</span>
           </div>
           <div class="flex items-center text-green-200 ml-4">
-            <Icon name="mdi:done" class="text-green-400 mr-2" size={24} />
+            <Icon name="mdi:done" class="text-primary mr-2" size={24} />
             <span>Available for new opportunities</span>
           </div>
 </div>
@@ -294,18 +303,20 @@ const quickActions = [
 
       <!-- Desktop Footer -->
       <div class="text-center">
-        <p class="text-gray-400 mb-4">
-          Let's build something amazing together 🚀
+        <p class="text-secondary mb-4 flex justify-center items-center">
+          Let's build something amazing together
+          <Icon name="mdi:rocket" class="text-primary" size={24} />
         </p>
-        <div class="text-sm text-gray-500">
+
+        <div class="text-sm text-secondary-dark">
           <p>$ whoami && echo "Available for new opportunities"</p>
-          <p class="text-green-400">malvin - Full-Stack Developer & Linux Enthusiast</p>
-          <p class="text-green-400">Available for new opportunities</p>
+          <p class="text-primary">malvin - Full-Stack Developer & Linux Enthusiast</p>
+          <p class="text-primary">Available for new opportunities</p>
         </div>
       </div>
     </div>
 
-    <div id="toast" class="fixed top-20 right-4 bg-green-700 text-black px-4 py-2 rounded opacity-0 transition-opacity duration-300 z-50 translate-x-0">
+    <div id="toast" class="fixed top-20 right-4 bg-muted-dark text-black px-4 py-2 rounded opacity-0 transition-opacity duration-300 z-50 translate-x-0">
       <span id="toast-message">Copied to clipboard!</span>
     </div>
 

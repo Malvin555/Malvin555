@@ -1,5 +1,7 @@
 ---
+import Header from "../components/ui/Header.astro";
 import "../styles/global.css";
+import Footer from "../components/ui/Footer.astro";
 const siteTitle = "Malvin – Web Developer & IT Student";
 const siteDescription =
   "Portfolio of Malvin, a passionate web developer with experience in Next.js, Laravel, and cybersecurity.";
@@ -34,8 +36,11 @@ const { title, description } = Astro.props;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
   </head>
-  <body class="min-h-screen bg-black font-mono text-green-400">
+  <body class="min-h-screen bg-black font-mono">
+    <Header />
     <slot />
+
+    <Footer />
   </body>
 </html>
 

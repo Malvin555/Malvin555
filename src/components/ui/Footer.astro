@@ -1,4 +1,5 @@
 ---
+// Astro Component Setup
 import { Icon } from "astro-icon/components";
 const currentYear = new Date().getFullYear();
 const socialLinks = [
@@ -7,24 +8,24 @@ const socialLinks = [
 ];
 ---
 
-<footer class="border-t border-gray-800">
+<footer class="bg-terminal-pattern border-tertiary border-t">
   <!-- Main Footer Content -->
-  <div class="mx-auto max-w-6xl py-4 md:py-6">
-    <div class="grid gap-4 text-center md:grid-cols-3 md:gap-6 md:text-left">
+  <div class="mx-auto max-w-6xl px-4 py-6 sm:px-6 md:px-8">
+    <div class="grid grid-cols-1 gap-6 text-center md:grid-cols-3 md:text-left">
       <!-- Terminal Output -->
       <div class="md:col-span-2">
         <div class="space-y-1 font-mono text-xs sm:text-sm">
-          <p class="text-gray-500">$ cat /etc/motd</p>
-          <p class="text-green-400">Thanks for visiting my portfolio!</p>
-          <p class="text-gray-400">Always learning, always building.</p>
+          <p class="text-secondary-dark">$ cat /etc/motd</p>
+          <p class="text-primary">Thanks for visiting my portfolio!</p>
+          <p class="text-secondary">Always learning, always building.</p>
         </div>
       </div>
 
       <!-- Quick Links -->
       <div class="font-mono text-xs sm:text-sm">
-        <p class="mb-2 text-gray-500">$ ls links/</p>
+        <p class="text-secondary-dark mb-2">$ ls links/</p>
         <div
-          class="flex flex-wrap justify-center gap-3 sm:gap-4 md:justify-start"
+          class="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start"
         >
           {
             socialLinks.map((link) => (
@@ -32,7 +33,7 @@ const socialLinks = [
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-400 transition-all duration-200 ease-out hover:-translate-y-px hover:text-green-400"
+                class="text-secondary hover:text-primary transition-all duration-200 ease-out hover:-translate-y-px"
               >
                 {link.name}
               </a>
@@ -44,27 +45,27 @@ const socialLinks = [
   </div>
 
   <!-- Bottom Bar -->
-  <div class="border-t border-gray-800 px-4 py-3 text-center md:p-4">
+  <div class="border-tertiary border-t px-4 py-4 text-center sm:px-6 md:px-8">
     <p
-      class="flex flex-wrap items-center justify-center gap-1 font-mono text-xs text-gray-400 sm:text-sm"
+      class="text-secondary flex flex-wrap items-center justify-center gap-1 font-mono text-xs sm:text-sm"
     >
-      <span class="text-gray-600">$</span>
+      <span class="text-secondary">$</span>
       echo "Made with"
       <Icon name="mdi:heart" class="text-red-500" size={16} />
       by Malvin © {currentYear} && exit 0
     </p>
   </div>
-
-  <!-- Back to Top -->
-  <button
-    id="back-to-top"
-    class="pointer-events-none fixed right-4 bottom-4 bg-green-700 p-5 text-black opacity-0 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/30 md:right-6 md:bottom-6 md:p-3"
-    onclick="scrollToTop()"
-    title="Back to top"
-  >
-    <span class="font-mono text-xs md:text-sm">↑</span>
-  </button>
 </footer>
+
+<!-- Back to Top Button -->
+<button
+  id="back-to-top"
+  class="bg-muted-dark hover:bg-primary-dark hover:shadow-primary-dark/30 pointer-events-none fixed right-4 bottom-4 p-3 font-mono text-xs text-black opacity-0 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:right-6 sm:bottom-6 sm:p-4 sm:text-sm"
+  onclick="scrollToTop()"
+  title="Back to top"
+>
+  ↑
+</button>
 
 <script>
   function scrollToTop() {
@@ -77,17 +78,14 @@ const socialLinks = [
   // Show/hide back to top button
   window.addEventListener("scroll", () => {
     const backToTop = document.getElementById("back-to-top");
-    if (backToTop) {
-      if (window.scrollY > 300) {
-        backToTop.classList.remove("opacity-0", "pointer-events-none");
-        backToTop.classList.add("opacity-100");
-      } else {
-        backToTop.classList.add("opacity-0", "pointer-events-none");
-        backToTop.classList.remove("opacity-100");
-      }
+    if (!backToTop) return;
+
+    if (window.scrollY > 300) {
+      backToTop.classList.remove("opacity-0", "pointer-events-none");
+      backToTop.classList.add("opacity-100");
+    } else {
+      backToTop.classList.add("opacity-0", "pointer-events-none");
+      backToTop.classList.remove("opacity-100");
     }
   });
-
-  // Make function globally available
-  (window as any).scrollToTop = scrollToTop;
 </script>
