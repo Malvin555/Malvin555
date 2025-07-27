@@ -1,6 +1,7 @@
 ---
-import Header from "../components/ui/Header.astro";
 import "../styles/global.css";
+import Header from "../components/ui/Header.astro";
+import Sidebar from "../components/ui/Sidebar.astro";
 import Footer from "../components/ui/Footer.astro";
 const siteTitle = "Malvin – Web Developer & IT Student";
 const siteDescription =
@@ -11,7 +12,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="text-[90%]">
   <head>
     <title>{siteTitle}</title>
     <meta name="description" content={siteDescription} />
@@ -36,27 +37,14 @@ const { title, description } = Astro.props;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
   </head>
-  <body class="min-h-screen bg-black font-mono">
-    <Header />
-    <slot />
-
+  <body class="bg-max flex min-h-screen flex-col font-mono">
+    <div class="flex flex-1 flex-col">
+      <Header />
+      <Sidebar />
+      <main class="flex-1">
+        <slot />
+      </main>
+    </div>
     <Footer />
   </body>
 </html>
-
-<style>
-  body {
-    background: #0c0c0c;
-  }
-
-  pre {
-    font-size: 0.8rem;
-    line-height: 1.2;
-  }
-
-  @media (max-width: 768px) {
-    pre {
-      font-size: 0.6rem;
-    }
-  }
-</style>

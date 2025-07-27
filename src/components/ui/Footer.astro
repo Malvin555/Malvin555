@@ -60,21 +60,14 @@ const socialLinks = [
 <!-- Back to Top Button -->
 <button
   id="back-to-top"
-  class="bg-muted-dark hover:bg-primary-dark hover:shadow-primary-dark/30 pointer-events-none fixed right-4 bottom-4 p-3 font-mono text-xs text-black opacity-0 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:right-6 sm:bottom-6 sm:p-4 sm:text-sm"
-  onclick="scrollToTop()"
+  class="bg-muted-dark hover:bg-primary-dark hover:shadow-primary-dark/30 fixed right-4 bottom-4 p-3 font-mono text-xs text-black opacity-0 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:right-6 sm:bottom-6 sm:p-4 sm:text-sm"
+  onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
   title="Back to top"
 >
   ↑
 </button>
 
 <script>
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
   // Show/hide back to top button
   window.addEventListener("scroll", () => {
     const backToTop = document.getElementById("back-to-top");

@@ -12,6 +12,7 @@
   --color-muted-dark: oklch(44.8% 0.119 151.328); /* Green 700 */
   --color-bright: oklch(92.5% 0.084 155.995); /* Green 200 */
   --color-min: #0a0a0a;
+  --color-max: #0c0c0c;
   --color-gin: #111111;
 
   --bg-terminal-pattern: radial-gradient(#00ff00 1px, transparent 1px);

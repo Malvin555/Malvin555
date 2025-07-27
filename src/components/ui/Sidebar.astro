@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+
+const navTabs = [
+  { name: "Home", icon: "mdi:home", href: "/" },
+  { name: "Preview", icon: "mdi:eye", href: "/preview" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="fixed top-1/2 left-4 z-50 -translate-y-1/2 space-y-4">
+  {
+    navTabs.map((tab) => {
+      const isActive = currentPath === tab.href;
+      return (
+        <a
+          href={tab.href}
+          class={`flex h-12 w-12 items-center justify-center shadow transition ${isActive ? "bg-gin border-primary border text-white" : "bg-gin border-tertiary border text-white hover:bg-zinc-800"}`}
+          title={tab.name}
+        >
+          <Icon name={tab.icon} class="h-6 w-6" />
+        </a>
+      );
+    })
+  }
+</aside>
