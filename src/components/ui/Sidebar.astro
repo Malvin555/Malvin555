@@ -1,4 +1,5 @@
 ---
+// Sidebar.astro
 import { Icon } from "astro-icon/components";
 
 const navTabs = [
@@ -9,14 +10,28 @@ const navTabs = [
 const currentPath = Astro.url.pathname;
 ---
 
-<aside class="fixed top-1/2 left-4 z-50 -translate-y-1/2 space-y-4">
+<!-- Toggle (Mobile only) -->
+<button
+  id="sidebar-toggle"
+  class="bg-gin border-tertiary fixed bottom-4 left-4 z-50 flex h-10 w-10 items-center justify-center border text-white shadow-md transition-all duration-300 md:hidden"
+  onclick="document.querySelector('#sidebar').classList.toggle('-translate-x-full')"
+  aria-label="Toggle Sidebar"
+>
+  <Icon name="mdi:menu" class="h-5 w-5" />
+</button>
+
+<!-- Sidebar -->
+<aside
+  id="sidebar"
+  class="fixed top-50 left-0 z-40 flex -translate-x-full flex-col items-center space-y-4 p-2 pt-6 shadow transition-transform duration-300 md:top-1/2 md:left-4 md:translate-x-0 md:-translate-y-1/2"
+>
   {
     navTabs.map((tab) => {
       const isActive = currentPath === tab.href;
       return (
         <a
           href={tab.href}
-          class={`flex h-12 w-12 items-center justify-center shadow transition ${isActive ? "bg-gin border-primary border text-white" : "bg-gin border-tertiary border text-white hover:bg-zinc-800"}`}
+          class={`flex h-10 w-10 items-center justify-center shadow transition ${isActive ? "bg-gin border-primary border text-white" : "bg-gin border-tertiary border text-white hover:bg-zinc-800"}`}
           title={tab.name}
         >
           <Icon name={tab.icon} class="h-6 w-6" />
