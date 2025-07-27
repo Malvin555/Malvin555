@@ -9,6 +9,7 @@ const siteDescription =
 const siteURL = "https://malvolio.vercel.app";
 const siteImage = `${siteURL}/android-chrome-512x512.png`;
 const { title, description } = Astro.props;
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -46,5 +47,6 @@ const { title, description } = Astro.props;
       </main>
     </div>
     <Footer />
+    <SpeedInsights />
   </body>
 </html>

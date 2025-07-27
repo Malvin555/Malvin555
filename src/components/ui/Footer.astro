@@ -8,9 +8,11 @@ const socialLinks = [
 ];
 ---
 
-<footer class="bg-terminal-pattern border-tertiary border-t">
+<footer class="border-tertiary relative overflow-hidden border-t">
+  <div class="bg-terminal-pattern pointer-events-none absolute inset-0 -z-10">
+  </div>
   <!-- Main Footer Content -->
-  <div class="mx-auto max-w-6xl px-4 py-6 sm:px-6 md:px-8">
+  <div class="z-10 mx-auto max-w-6xl px-4 py-6 sm:px-6 md:px-8">
     <div class="grid grid-cols-1 gap-6 text-center md:grid-cols-3 md:text-left">
       <!-- Terminal Output -->
       <div class="md:col-span-2">
