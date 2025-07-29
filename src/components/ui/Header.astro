@@ -1,14 +1,20 @@
 ---
-// Optional: Add navigation items
-const navItems = [
-  { name: "about", href: "#about" },
-  { name: "skills", href: "#skills-projects" },
-  { name: "contact", href: "#contact" },
-];
+const { pathname } = new URL(Astro.request.url);
+
+const navItems =
+  pathname === "/"
+    ? [
+        { name: "about", href: "#about" },
+        { name: "skills", href: "#skills-projects" },
+        { name: "contact", href: "#contact" },
+      ]
+    : pathname === "/preview/"
+      ? [{ name: "project", href: "#project" }]
+      : [];
 ---
 
 <header
-  class="border-tertiary border-border bg-background supports-[backdrop-filter]:bg-background/50 fixed top-0 z-40 w-full border-b bg-black/90 p-4 backdrop-blur supports-[backdrop-filter]:backdrop-blur-lg"
+  class="border-tertiary border-border bg-background supports-[backdrop-filter]:bg-background/50 fixed top-0 z-40 w-full border-b bg-black/50 p-4 backdrop-blur supports-[backdrop-filter]:backdrop-blur-lg"
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between">
     <!-- Terminal Window Controls -->
@@ -33,7 +39,6 @@ const navItems = [
       <span class="ml-4 font-mono text-white">malvin@portfolio:~$</span>
     </div>
 
-    <!-- Optional: Navigation Menu (Desktop) -->
     <nav class="hidden items-center gap-6 md:flex">
       {
         navItems.map((item) => (
@@ -77,40 +82,3 @@ const navItems = [
     </div>
   </nav>
 </header>
-
-<script>
-  function toggleMobileMenu() {
-    const menu = document.getElementById("mobile-menu");
-    const btn = document.getElementById("mobile-menu-btn");
-
-    if (menu && btn) {
-      if (menu.classList.contains("hidden")) {
-        menu.classList.remove("hidden");
-        btn.innerHTML = '<span class="font-mono text-sm">close</span>';
-      } else {
-        menu.classList.add("hidden");
-        btn.innerHTML = '<span class="font-mono text-sm">menu</span>';
-      }
-    }
-  }
-
-  // Make function globally available
-  (window as any).toggleMobileMenu = toggleMobileMenu;
-
-  // Smooth scrolling for navigation links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      e.preventDefault();
-      const href = anchor.getAttribute("href");
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }
-    });
-  });
-</script>

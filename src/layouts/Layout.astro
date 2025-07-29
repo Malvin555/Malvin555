@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "aos/dist/aos.css";
 import Header from "../components/ui/Header.astro";
 import Sidebar from "../components/ui/Sidebar.astro";
 import Footer from "../components/ui/Footer.astro";
@@ -9,7 +10,6 @@ const siteDescription =
 const siteURL = "https://malvolio.vercel.app";
 const siteImage = `${siteURL}/android-chrome-512x512.png`;
 const { title, description } = Astro.props;
-import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -37,6 +37,9 @@ import SpeedInsights from "@vercel/speed-insights/astro";
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Script -->
+    <script src="/src/scripts/main.js"></script>
   </head>
   <body class="bg-max flex min-h-screen flex-col font-mono">
     <div class="flex flex-1 flex-col">
@@ -47,6 +50,5 @@ import SpeedInsights from "@vercel/speed-insights/astro";
       </main>
     </div>
     <Footer />
-    <SpeedInsights />
   </body>
 </html>

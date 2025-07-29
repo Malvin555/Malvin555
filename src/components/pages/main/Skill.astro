@@ -78,8 +78,11 @@ declare global {
 
     <!-- Desktop Terminal Header -->
     <div class="mb-8 hidden md:block">
-      <h2 class="mb-4 text-2xl select-none lg:text-3xl">
-        <span class="text-white">$</span> ls -la /home/malvin/
+      <h2
+        id="terminal-title"
+        class="text-primary mb-4 font-mono text-2xl select-none lg:text-3xl"
+      >
+        <span class="text-white">$ </span><span id="skill-title"></span>
       </h2>
       <div class="mb-6 text-sm text-gray-500">
         <p>total {Object.keys(skills).length}</p>
@@ -157,7 +160,10 @@ declare global {
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {
             Object.entries(skills).map(([category, items]) => (
-              <div class="group hover:border-muted-dark bg-min border border-gray-800 p-4 transition-colors hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+              <div
+                data-aos="zoom-in"
+                class="group hover:border-muted-dark bg-min border border-gray-800 p-4 transition-colors hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]"
+              >
                 <div class="mb-4 flex items-center gap-2 text-green-300">
                   <span class="text-primary">
                     {terminalIcons[category as keyof typeof skills]}
@@ -332,6 +338,7 @@ declare global {
         }));
 
       renderRepos();
+
       reposLoaded = true;
 
       // Update project count
@@ -411,7 +418,7 @@ declare global {
         `
             : ""
         }
-        <a href="${repo.url}" target="_blank" class="flex min-h-[44px] w-full items-center justify-center gap-2 bg-muted-dark px-4 py-2 font-medium text-black transition-colors hover:bg-green-600">
+        <a href="${repo.url}" target="_blank" class="flex w-full items-center justify-center gap-2 border border-primary  border-primary-dark px-3 py-1 text-primary-bright font-medium  transition-colors hover:bg-green-600 ">
           View Code →
         </a>
       </div>
@@ -487,7 +494,7 @@ declare global {
               : ""
           }
         </div>
-        <a href="${repo.url}" target="_blank" class="flex min-h-[44px] items-center justify-center gap-1 border border-muted-dark px-3 py-2 text-xs text-primary transition-all hover:bg-muted-dark hover:text-black">
+        <a href="${repo.url}" target="_blank" class="w-full inline-block border border-primary-dark px-3 py-1 text-center text-primary-bright transition hover:bg-green-400 hover:text-black">
           <span>📂</span> open
         </a>
       </div>
@@ -505,26 +512,3 @@ declare global {
   window.switchTab = switchTab;
   window.loadGitHubRepos = loadGitHubRepos;
 </script>
-
-<style>
-  /* Desktop hover effects with blinking cursor */
-  @media (min-width: 768px) {
-    .group:hover::after {
-      content: "_";
-      animation: blink 1s infinite;
-      color: #22c55e;
-      margin-left: 4px;
-    }
-
-    @keyframes blink {
-      0%,
-      50% {
-        opacity: 1;
-      }
-      51%,
-      100% {
-        opacity: 0;
-      }
-    }
-  }
-</style>

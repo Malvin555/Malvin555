@@ -85,8 +85,11 @@ const quickActions = [
 
     <!-- Desktop Terminal Header -->
     <div class="hidden md:block mb-8">
-      <h2 class="text-2xl lg:text-3xl mb-4 select-none">
-        <span class="text-white">$</span> contact --help
+      <h2
+        id="terminal-title"
+        class="text-primary mb-4 font-mono text-2xl select-none lg:text-3xl"
+      >
+        <span class="text-white">$ </span><span id="project-title"></span>
       </h2>
       <div class="text-sm text-secondary-dark mb-6">
         <p>USAGE: contact [OPTIONS]</p>
@@ -190,7 +193,7 @@ const quickActions = [
     <!-- Desktop Content -->
     <div class="hidden md:block">
       <!-- Help Options -->
-      <div class="mb-8 bg-min border border-tertiary p-4">
+      <div class="mb-8 bg-min border border-tertiary p-4" data-aos="zoom-in">
         <h3 class="text-primary-bright mb-4">OPTIONS:</h3>
         <div class="space-y-2 text-sm">
           {helpCommands.map(cmd => (
@@ -205,7 +208,7 @@ const quickActions = [
       <!-- Contact Methods Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {contactMethods.map(contact => (
-          <div class="bg-min border border-tertiary p-4 hover:border-muted-dark transition-all group md:hover:bg-gradient-to-br md:hover:from-[#0f0f0f] md:hover:to-[#1a1a1a] md:hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+          <div data-aos="zoom-in" class="bg-min border border-tertiary p-4 hover:border-muted-dark transition-all group md:hover:bg-gradient-to-br md:hover:from-[#0f0f0f] md:hover:to-[#1a1a1a] md:hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
             <!-- Status Line -->
             <div class="flex items-center justify-between mb-3 text-xs">
               <div class="flex items-center gap-2">
@@ -254,7 +257,7 @@ const quickActions = [
       </div>
 
       <!-- Quick Actions Desktop -->
-      <div class="mb-8 bg-min border border-tertiary p-4">
+      <div data-aos="fade-up" class="mb-8 bg-min border border-tertiary p-4">
         <h3 class="text-primary-bright mb-4 flex items-center gap-2">
           <span><Icon name="mdi:flash" class="block mx-auto" size={24} /></span> Quick Actions
         </h3>
@@ -271,7 +274,7 @@ const quickActions = [
       </div>
 
       <!-- Terminal Session -->
-      <div class="bg-min border border-tertiary p-4 mb-8">
+      <div data-aos="fade-up" class="bg-min border border-tertiary p-4 mb-8">
         <h3 class="text-primary-bright mb-4 flex items-center gap-2">
           <span><Icon name="mdi:terminal" class="block mx-auto" size={24} /></span> Interactive Session
         </h3>
@@ -353,31 +356,3 @@ const quickActions = [
   (window as any).copyToClipboard = copyToClipboard;
   (window as any).showToast = showToast;
 </script>
-
-<style>
-.action-card:hover .action-title {
-  color: black;
-}
-
-  /* Desktop hover effects - blinking cursor */
-  @media (min-width: 768px) {
-    .group:hover::after {
-      content: "_";
-      animation: blink 1s infinite;
-      color: #22c55e;
-      margin-left: 4px;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-  }
-
-  /* Toast slide-in animation */
-  @keyframes slideIn {
-    to {
-      transform: translateX(0);
-    }
-  }
-</style>

@@ -1,0 +1,129 @@
+---
+import { Icon } from "astro-icon/components";
+
+const projects = [
+  {
+    title: "Portfolio Website",
+    description: "My personal portfolio built with Astro and TailwindCSS.",
+    url: "https://malvolio.vercel.app",
+    repo: "https://github.com/Malvin555/Malvin555",
+    icon: "mdi:web",
+    status: "Completed",
+  },
+  {
+    title: "PuService (Next Based)",
+    description: "My personal portfolio built with Astro and TailwindCSS.",
+    url: "https://github.com/Malvin555/PuService-WIP-",
+    repo: "https://github.com/Malvin555/PuService-WIP-",
+    icon: "mdi:report-timeline",
+    status: "Process",
+  },
+  {
+    title: "Absence App",
+    description:
+      "A web-based attendance app with admin/teacher/student features.",
+    url: "null",
+    repo: "null",
+    icon: "mdi:calendar-check",
+    status: "Coming Soon",
+  },
+  {
+    title: "TJ Math App",
+    description:
+      "A web-based attendance app with admin/teacher/student features.",
+    url: "https://tj-math.vercel.app/",
+    repo: "https://github.com/Malvin555/TJ-Math",
+    icon: "mdi:math-integral-box",
+    status: "Completed",
+  },
+];
+---
+<section id="project"
+  class="text-primary bg-terminal-pattern mt-13 min-h-screen px-4 py-12 font-mono sm:px-6 sm:py-16 md:py-20"
+>
+  <div class="mx-auto max-w-6xl">
+    <!-- Mobile Header -->
+    <div class="mb-8 text-center md:hidden">
+      <h2 class="mb-2 text-2xl text-white flex justify-center"><Icon class="mx-2" name="mdi:eye" /> Projects Preview</h2>
+      <p class="text-secondary text-sm">
+        A collection of things I've built recently.
+      </p>
+    </div>
+
+    <!-- Desktop Terminal Header -->
+    <div class="mb-8 hidden md:block">
+      <h2 class="mb-4 text-2xl select-none lg:text-3xl">
+        <span class="text-white">$</span> ls -la /home/malvin/projects/
+      </h2>
+      <div class="mb-6 text-sm text-gray-500">
+        <p>total {projects.length}</p>
+        <p>drwxr-xr-x 2 malvin malvin 4096 Jul 29 21:45 projects/hosted</p>
+      </div>
+    </div>
+
+    <!-- Responsive Projects Grid -->
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map((project) => (
+          <div class="group border border-gray-800 bg-min p-4 transition-all duration-300 hover:border-muted-dark hover:bg-gradient-to-br hover:from-[#0f0f0f] hover:to-[#1a1a1a] hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+            <!-- Title + Icon -->
+            <div class="mb-3 flex items-center gap-2 text-green-300">
+              <Icon name={project.icon} size={20} class="text-green-400" />
+              <span class="font-bold text-base sm:text-sm">{project.title}</span>
+            </div>
+
+            <!-- Status Badge -->
+            {(() => {
+              const status = project.status;
+              const statusColors: { [key: string]: string } = {
+                "Completed": "text-green-300 ring-green-500",
+                "Process": "text-yellow-300 ring-yellow-500",
+                "Coming Soon": "text-gray-400 ring-gray-500",
+              };
+              const badgeClass = statusColors[status] || "text-gray-300 ring-gray-500";
+
+              return (
+                <div class={`mb-2 inline-block  px-2 py-0.5 text-[11px] ring-1 ${badgeClass}`}>
+                  {status}
+                </div>
+              );
+            })()}
+
+            <!-- Description -->
+            <p class="mb-4 text-sm leading-relaxed text-gray-400">
+              {project.description}
+            </p>
+
+            <!-- Action Buttons -->
+            {
+              project.status === "Coming Soon" ? (
+                <div class="md:inline-block sm:w-auto flex border border-gray-700 px-3 py-1 text-sm text-gray-500">
+                  Coming Soon
+                </div>
+              ) : (
+                <div class="flex flex-col gap-2 sm:flex-row sm:gap-3 text-sm">
+                  <a
+                    href={project.url}
+                    class="w-full sm:w-auto border border-primary-dark px-3 py-1 text-center text-primary-bright transition hover:bg-green-400 hover:text-black"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Live
+                  </a>
+                  <a
+                    href={project.repo}
+                    class="w-full sm:w-auto border border-gray-600 px-3 py-1 text-center text-gray-400 transition hover:border-primary-dark hover:text-primary-bright"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Code
+                  </a>
+                </div>
+              )
+            }
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

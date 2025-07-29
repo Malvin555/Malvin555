@@ -1,9 +1,22 @@
 ---
 import { Icon } from "astro-icon/components";
 const links = [
-  { name: "GitHub", url: "https://github.com/malvin555", icon: "mdi:github" },
-  { name: "Email", url: "mailto:malvin@example.com", icon: "mdi:email" },
-  { name: "Resume", url: "/resume.pdf", download: true, icon: "mdi:file-pdf" },
+  {
+    name: "GitHub",
+    url: "https://github.com/malvin555",
+    icon: "mdi:github",
+  },
+  {
+    name: "Email",
+    url: "mailto:MalTon55@proton.me",
+    icon: "mdi:email",
+  },
+  {
+    name: "Resume",
+    url: "/resume.pdf",
+    download: true,
+    icon: "mdi:file-pdf",
+  },
 ];
 ---
 
@@ -72,54 +85,4 @@ const links = [
     <span>Available for opportunities</span>
   </div>
 </section>
-<script is:inline>
-  window.addEventListener("DOMContentLoaded", () => {
-    const target = document.getElementById("typewriter");
-
-    if (!target) return;
-
-    const texts = [
-      "Full-Stack Developer",
-      "Back-End Developer",
-      "Front-End Developer",
-    ];
-
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
-
-    function typeWriter() {
-      const currentText = texts[textIndex];
-
-      if (isPaused) {
-        setTimeout(typeWriter, 2000);
-        isPaused = false;
-        return;
-      }
-
-      if (isDeleting) {
-        target.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-
-        if (charIndex === 0) {
-          isDeleting = false;
-          textIndex = (textIndex + 1) % texts.length;
-        }
-      } else {
-        target.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
-
-        if (charIndex === currentText.length) {
-          isPaused = true;
-          isDeleting = true;
-        }
-      }
-
-      const typingSpeed = isDeleting ? 50 : 75;
-      setTimeout(typeWriter, typingSpeed);
-    }
-
-    typeWriter();
-  });
-</script>
+<script is:inline></script>

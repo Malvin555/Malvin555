@@ -62,25 +62,9 @@ const socialLinks = [
 <!-- Back to Top Button -->
 <button
   id="back-to-top"
-  class="bg-muted-dark hover:bg-primary-dark hover:shadow-primary-dark/30 fixed right-4 bottom-4 p-3 font-mono text-xs text-black opacity-0 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:right-6 sm:bottom-6 sm:p-4 sm:text-sm"
+  class="bg-muted-dark hover:bg-primary-dark hover:shadow-primary-dark/30 fixed right-4 bottom-4 p-2.5 font-mono text-xs text-black opacity-0 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:right-6 sm:bottom-6 sm:p-4 sm:text-sm"
   onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
   title="Back to top"
 >
-  ↑
+  <Icon name="mdi:arrow-up" class="text-white" size={16} />
 </button>
-
-<script>
-  // Show/hide back to top button
-  window.addEventListener("scroll", () => {
-    const backToTop = document.getElementById("back-to-top");
-    if (!backToTop) return;
-
-    if (window.scrollY > 300) {
-      backToTop.classList.remove("opacity-0", "pointer-events-none");
-      backToTop.classList.add("opacity-100");
-    } else {
-      backToTop.classList.add("opacity-0", "pointer-events-none");
-      backToTop.classList.remove("opacity-100");
-    }
-  });
-</script>

@@ -64,8 +64,11 @@ const mobileHighlights = [
 
     <!-- Desktop Terminal Header -->
     <div class="mb-8 hidden md:block">
-      <h2 class="mb-4 text-2xl select-none lg:text-3xl">
-        <span class="text-white">$</span> cat /proc/self/status
+      <h2
+        id="terminal-title"
+        class="text-primary mb-4 font-mono text-2xl select-none lg:text-3xl"
+      >
+        <span class="text-white">$ </span><span id="about-title"></span>
       </h2>
     </div>
 
@@ -129,7 +132,7 @@ const mobileHighlights = [
 
     <!-- Desktop Content -->
     <div class="hidden md:block">
-      <div class="grid gap-8 lg:grid-cols-2">
+      <div class="grid gap-8 lg:grid-cols-2" data-aos="fade-up">
         <!-- System Info -->
         <div class="border-tertiary bg-min border p-4">
           <h3 class="text-primary-bright mb-4 flex items-center gap-2">
@@ -179,7 +182,7 @@ const mobileHighlights = [
       </div>
 
       <!-- Main Content -->
-      <div class="border-tertiary bg-min mt-8 border p-6">
+      <div class="border-tertiary bg-min mt-8 border p-6" data-aos="fade-up">
         <div class="mb-4">
           <p class="text-secondary-dark mb-2 text-xs">$ cat ~/.profile</p>
         </div>
@@ -218,24 +221,3 @@ const mobileHighlights = [
     </div>
   </div>
 </section>
-
-<style>
-  /* Desktop hover effects */
-  @media (min-width: 768px) {
-    .bg-min:hover {
-      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-    }
-  }
-
-  /* Mobile optimizations */
-  @media (max-width: 767px) {
-    .bg-gin {
-      background: #111111;
-    }
-
-    .bg-gin:active {
-      background: #1a1a1a;
-      transform: scale(0.98);
-    }
-  }
-</style>
