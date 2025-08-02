@@ -6,9 +6,16 @@ const socialLinks = [
   { name: "github", url: "https://github.com/malvin555" },
   { name: "email", url: "mailto:malvin@example.com" },
 ];
+
+const pathname = Astro.url.pathname;
+let bgClass = "";
+
+if (pathname === "/preview/") {
+  bgClass = "bg-black";
+}
 ---
 
-<footer class="border-tertiary relative overflow-hidden border-t">
+<footer class={`border-tertiary ${bgClass} relative overflow-hidden border-t`}>
   <div class="bg-terminal-pattern pointer-events-none absolute inset-0 -z-10">
   </div>
   <!-- Main Footer Content -->
@@ -62,7 +69,7 @@ const socialLinks = [
 <!-- Back to Top Button -->
 <button
   id="back-to-top"
-  class="bg-muted-dark hover:bg-primary-dark hover:shadow-primary-dark/30 fixed right-4 bottom-4 p-2.5 font-mono text-xs text-black opacity-0 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:right-6 sm:bottom-6 sm:p-4 sm:text-sm"
+  class="bg-gin border-tertiary hover:border-primary hover:shadow-primary-dark/30 fixed right-4 bottom-4 border p-2.5 font-mono text-xs text-black opacity-0 transition-all duration-300 ease-out hover:shadow-lg"
   onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
   title="Back to top"
 >

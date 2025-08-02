@@ -10,10 +10,10 @@ const navTabs = [
 const currentPath = Astro.url.pathname;
 ---
 
-<!-- Toggle (Mobile only) -->
+<!-- Toggle -->
 <button
   id="sidebar-toggle"
-  class="bg-gin border-tertiary hover:border-primary fixed bottom-4 left-4 z-50 flex h-10 w-10 cursor-pointer items-center justify-center border text-white shadow-md transition-all duration-300 xl:hidden"
+  class="bg-gin border-tertiary hover:border-primary hover:shadow-primary-dark/30 fixed bottom-4 left-4 z-50 flex h-10 w-10 cursor-pointer items-center justify-center border text-white shadow-md transition-all duration-300 hover:shadow-lg xl:hidden"
   onclick="document.querySelector('#sidebar').classList.toggle('-translate-x-full')"
   aria-label="Toggle Sidebar"
 >
@@ -31,7 +31,7 @@ const currentPath = Astro.url.pathname;
       return (
         <a
           href={tab.href}
-          class={`flex h-10 w-10 items-center justify-center shadow transition ${isActive ? "bg-gin border-primary border text-white" : "bg-gin border-tertiary border text-white hover:bg-zinc-800"}`}
+          class={`hover:border-primary flex h-10 w-10 items-center justify-center shadow transition ${isActive ? "bg-gin border-primary border text-white" : "bg-gin border-tertiary border text-white hover:bg-zinc-800"}`}
           title={tab.name}
         >
           <Icon name={tab.icon} class="h-6 w-6" />

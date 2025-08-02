@@ -193,7 +193,7 @@ const quickActions = [
     <!-- Desktop Content -->
     <div class="hidden md:block">
       <!-- Help Options -->
-      <div class="mb-8 bg-min border border-tertiary p-4" data-aos="zoom-in">
+      <div class="mb-8 bg-min border border-tertiary p-4" >
         <h3 class="text-primary-bright mb-4">OPTIONS:</h3>
         <div class="space-y-2 text-sm">
           {helpCommands.map(cmd => (
@@ -208,7 +208,7 @@ const quickActions = [
       <!-- Contact Methods Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {contactMethods.map(contact => (
-          <div data-aos="zoom-in" class="bg-min border border-tertiary p-4 hover:border-muted-dark transition-all group md:hover:bg-gradient-to-br md:hover:from-[#0f0f0f] md:hover:to-[#1a1a1a] md:hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+          <div  class="bg-min border border-tertiary p-4 hover:border-muted-dark transition-all group md:hover:bg-gradient-to-br md:hover:from-[#0f0f0f] md:hover:to-[#1a1a1a] md:hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
             <!-- Status Line -->
             <div class="flex items-center justify-between mb-3 text-xs">
               <div class="flex items-center gap-2">
@@ -257,7 +257,7 @@ const quickActions = [
       </div>
 
       <!-- Quick Actions Desktop -->
-      <div data-aos="fade-up" class="mb-8 bg-min border border-tertiary p-4">
+      <div class="mb-8 bg-min border border-tertiary p-4">
         <h3 class="text-primary-bright mb-4 flex items-center gap-2">
           <span><Icon name="mdi:flash" class="block mx-auto" size={24} /></span> Quick Actions
         </h3>
@@ -274,7 +274,7 @@ const quickActions = [
       </div>
 
       <!-- Terminal Session -->
-      <div data-aos="fade-up" class="bg-min border border-tertiary p-4 mb-8">
+      <div class="bg-min border border-tertiary p-4 mb-8">
         <h3 class="text-primary-bright mb-4 flex items-center gap-2">
           <span><Icon name="mdi:terminal" class="block mx-auto" size={24} /></span> Interactive Session
         </h3>
@@ -325,34 +325,3 @@ const quickActions = [
 
   </div>
 </section>
-
-<script>
-  function copyToClipboard(text: string) {
-    navigator.clipboard.writeText(text).then(() => {
-      showToast('Copied to clipboard!');
-    }).catch(() => {
-      showToast('Failed to copy');
-    });
-  }
-
-  function showToast(message: string) {
-    const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toast-message');
-
-    if (!toast || !toastMessage) return;
-
-    toastMessage.textContent = message;
-    toast.classList.remove('opacity-0');
-    toast.classList.add('opacity-100');
-
-    setTimeout(() => {
-      if (!toast) return;
-      toast.classList.remove('opacity-100');
-      toast.classList.add('opacity-0');
-    }, 2000);
-  }
-
-  // Make functions globally available
-  (window as any).copyToClipboard = copyToClipboard;
-  (window as any).showToast = showToast;
-</script>

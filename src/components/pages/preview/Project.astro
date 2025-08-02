@@ -11,8 +11,27 @@ const projects = [
     status: "Completed",
   },
   {
+    title: "Blog-TL",
+    description:
+      "My first ever Portfolio website built with tailwind",
+    url: "https://malvin555.github.io/Frontend-Projects/Blog-TL/",
+    repo: "https://github.com/Malvin555/Frontend-Projects",
+    icon: "mdi:web",
+    status: "Completed",
+  },
+  {
+    title: "Horizon Academy",
+    description:
+      "University Landing Page",
+    url: "https://malvin555.github.io/Frontend-Projects/Horizon-Academy/",
+    repo: "https://github.com/Malvin555/Frontend-Projects",
+    icon: "mdi:school",
+    status: "Completed",
+  },
+
+  {
     title: "PuService (Next Based)",
-    description: "My personal portfolio built with Astro and TailwindCSS.",
+    description: "Report Service based on Next.js and Laravel",
     url: "https://github.com/Malvin555/PuService-WIP-",
     repo: "https://github.com/Malvin555/PuService-WIP-",
     icon: "mdi:report-timeline",
@@ -30,12 +49,13 @@ const projects = [
   {
     title: "TJ Math App",
     description:
-      "A web-based attendance app with admin/teacher/student features.",
+      "Improve your math skills with this app by answering fast quiz",
     url: "https://tj-math.vercel.app/",
     repo: "https://github.com/Malvin555/TJ-Math",
     icon: "mdi:math-integral-box",
     status: "Completed",
   },
+
 ];
 ---
 <section id="project"
@@ -51,9 +71,13 @@ const projects = [
     </div>
 
     <!-- Desktop Terminal Header -->
+
     <div class="mb-8 hidden md:block">
-      <h2 class="mb-4 text-2xl select-none lg:text-3xl">
-        <span class="text-white">$</span> ls -la /home/malvin/projects/
+      <h2
+        id="terminal-title"
+        class="text-primary mb-4 font-mono text-2xl select-none lg:text-3xl"
+      >
+        <span class="text-white">$ </span><span id="preview-title"></span>
       </h2>
       <div class="mb-6 text-sm text-gray-500">
         <p>total {projects.length}</p>
@@ -104,7 +128,7 @@ const projects = [
                 <div class="flex flex-col gap-2 sm:flex-row sm:gap-3 text-sm">
                   <a
                     href={project.url}
-                    class="w-full sm:w-auto border border-primary-dark px-3 py-1 text-center text-primary-bright transition hover:bg-green-400 hover:text-black"
+                    class="w-full sm:w-auto border  border-muted-dark px-3 py-1 text-center text-primary transition hover:bg-muted-dark hover:text-black"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

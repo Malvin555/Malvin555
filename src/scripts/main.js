@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
   runTypewriter("#about-title", ["cat /proc/self/status"]);
   runTypewriter("#project-title", ["contact --help"]);
   runTypewriter("#skill-title", ["ls -la /home/malvin/"]);
+  runTypewriter("#preview-title", ["ls -la /home/malvin/projects/"]);
 });
 
 // Arrow Button
@@ -122,3 +123,34 @@ window.addEventListener("scroll", () => {
     backToTop.classList.remove("opacity-100");
   }
 });
+function copyToClipboard(text) {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      showToast("Copied to clipboard!");
+    })
+    .catch(() => {
+      showToast("Failed to copy");
+    });
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  const toastMessage = document.getElementById("toast-message");
+
+  if (!toast || !toastMessage) return;
+
+  toastMessage.textContent = message;
+  toast.classList.remove("opacity-0");
+  toast.classList.add("opacity-100");
+
+  setTimeout(() => {
+    if (!toast) return;
+    toast.classList.remove("opacity-100");
+    toast.classList.add("opacity-0");
+  }, 2000);
+}
+
+// Make functions globally available
+window.copyToClipboard = copyToClipboard;
+window.showToast = showToast;
