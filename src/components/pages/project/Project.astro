@@ -11,12 +11,30 @@ const projects = [
     status: "Completed",
   },
   {
-    title: "Blog-TL",
+    title: "GroundChess",
     description:
-      "My first ever Portfolio website built with tailwind",
-    url: "https://malvin555.github.io/Frontend-Projects/Blog-TL/",
-    repo: "https://github.com/Malvin555/Frontend-Projects",
-    icon: "mdi:web",
+      "Real-time 2-player chess game built with Next.js and Socket.IO — school project for MPLS ",
+      url: "null",
+    repo: "https://github.com/Malvin555/GroundChess",
+    icon: "mdi:chess-queen",
+    status: "Completed",
+  },
+  {
+    title: "HydroWash",
+    description:
+    "Laravel laundry service with order management, role-based access, and real-time tracking.",
+      url: "null",
+    repo: "https://github.com/Malvin555/HydroWash",
+    icon: "mdi:laundrette",
+    status: "Completed",
+  },
+  {
+    title: "Z-Library",
+    description:
+    "Library management app using PHP and MySQL. Manages books, authors, and borrowing records. Built to learn CRUD operations and database interaction.",
+      url: "null",
+    repo: "https://github.com/Malvin555/Z-Library",
+    icon: "mdi:book",
     status: "Completed",
   },
   {
@@ -32,7 +50,7 @@ const projects = [
   {
     title: "PuService (Next Based)",
     description: "Report Service based on Next.js and Laravel",
-    url: "https://github.com/Malvin555/PuService-WIP-",
+    url: "null",
     repo: "https://github.com/Malvin555/PuService-WIP-",
     icon: "mdi:report-timeline",
     status: "Process",
@@ -126,22 +144,26 @@ const projects = [
                 </div>
               ) : (
                 <div class="flex flex-col gap-2 sm:flex-row sm:gap-3 text-sm">
-                  <a
-                    href={project.url}
-                    class="w-full sm:w-auto border  border-muted-dark px-3 py-1 text-center text-primary transition hover:bg-muted-dark hover:text-black"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live
-                  </a>
-                  <a
-                    href={project.repo}
-                    class="w-full sm:w-auto border border-gray-600 px-3 py-1 text-center text-gray-400 transition hover:border-primary-dark hover:text-primary-bright"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Code
-                  </a>
+                  {project.url !== "null" && (
+                    <a
+                      href={project.url}
+                      class="w-full sm:w-auto border border-muted-dark px-3 py-1 text-center text-primary transition hover:bg-muted-dark hover:text-black"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live
+                    </a>
+                  )}
+                  {project.repo !== "null" && (
+                    <a
+                      href={project.repo}
+                      class="w-full sm:w-auto border border-gray-600 px-3 py-1 text-center text-gray-400 transition hover:border-primary-dark hover:text-primary-bright"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Code
+                    </a>
+                  )}
                 </div>
               )
             }

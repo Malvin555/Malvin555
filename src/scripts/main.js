@@ -10,6 +10,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll("nav a[href^='#']");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      let visibleSections = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (visibleSections.length > 0) {
+        const id = visibleSections[0].target.getAttribute("id");
+
+        navLinks.forEach((link) => {
+          link.classList.remove("text-primary");
+          link.classList.add("text-secondary");
+
+          if (link.getAttribute("href") === `#${id}`) {
+            link.classList.remove("text-secondary");
+            link.classList.add("text-primary");
+          }
+        });
+      }
+    },
+    {
+      root: null,
+      rootMargin: "0px 0px -30% 0px", // Show early near bottom
+      threshold: [0.3, 0.6, 1], // Multiple thresholds to improve accuracy
+    },
+  );
+
+  sections.forEach((section) => observer.observe(section));
+});
+
 // Navbar Menu
 window.addEventListener("DOMContentLoaded", () => {
   function toggleMobileMenu() {
@@ -104,11 +138,39 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  runTypewriter("#about-title", ["cat /proc/self/status"]);
-  runTypewriter("#project-title", ["contact --help"]);
-  runTypewriter("#skill-title", ["ls -la /home/malvin/"]);
-  runTypewriter("#preview-title", ["ls -la /home/malvin/projects/"]);
+  runOnVisible("#about-title", () =>
+    runTypewriter("#about-title", ["cat /proc/self/status"]),
+  );
+
+  runOnVisible("#project-title", () =>
+    runTypewriter("#project-title", ["contact --help"]),
+  );
+
+  runOnVisible("#skill-title", () =>
+    runTypewriter("#skill-title", ["ls -la /home/malvin/"]),
+  );
+
+  runOnVisible("#preview-title", () =>
+    runTypewriter("#preview-title", ["ls -la /home/malvin/projects/"]),
+  );
 });
+
+// Helper: run only when visible
+function runOnVisible(selector, callback) {
+  const el = document.querySelector(selector);
+  if (!el) return;
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        callback();
+        // observer.unobserve(entry.target); Run Only Once
+      }
+    });
+  });
+
+  observer.observe(el);
+}
 
 // Arrow Button
 window.addEventListener("scroll", () => {
