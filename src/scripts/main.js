@@ -1,6 +1,37 @@
 import AOS from "aos";
 import { runTypewriter } from "./typewriter";
 
+// Loading Screen
+document.addEventListener("DOMContentLoaded", function () {
+  const loadingScreen = document.getElementById("loading-screen");
+  const typewriterText = document.getElementById("typewriter-text");
+  const text = "loading";
+  let i = 0;
+
+  function typeWriter() {
+    if (i < text.length) {
+      typewriterText.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
+    }
+  }
+
+  typeWriter();
+
+  // Auto-hide after 1.5 seconds
+  setTimeout(() => {
+    loadingScreen.style.opacity = "0";
+    loadingScreen.style.transition = "opacity 0.3s ease-out";
+
+    setTimeout(() => {
+      loadingScreen.style.display = "none";
+      document.body.style.overflow = "auto";
+    }, 300);
+  }, 1500);
+
+  document.body.style.overflow = "hidden";
+});
+
 // Aos Module
 document.addEventListener("DOMContentLoaded", () => {
   AOS.init({
