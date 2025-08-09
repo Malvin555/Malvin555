@@ -4,13 +4,13 @@ import "aos/dist/aos.css";
 import Header from "../components/ui/Header.astro";
 import Sidebar from "../components/ui/Sidebar.astro";
 import Footer from "../components/ui/Footer.astro";
-import LoadingScreen from "../components/ui/LoadingScreen.astro";
 const siteTitle = "Malvin – Web Developer & IT Student";
 const siteDescription =
   "Portfolio of Malvin, a passionate web developer with experience in Next.js, Laravel, and cybersecurity.";
 const siteURL = "https://malvolio.vercel.app";
 const siteImage = `${siteURL}/android-chrome-512x512.png`;
 const { title, description } = Astro.props;
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -41,10 +41,10 @@ const { title, description } = Astro.props;
 
     <!-- Script -->
     <script src="/src/scripts/main.js"></script>
+    <ViewTransitions />
   </head>
   <body class="bg-max flex min-h-screen flex-col font-mono">
     <div class="flex flex-1 flex-col">
-      <LoadingScreen />
       <Header />
       <Sidebar />
       <main class="flex-1">
