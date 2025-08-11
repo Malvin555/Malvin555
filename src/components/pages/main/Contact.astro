@@ -2,15 +2,6 @@
 import { Icon } from "astro-icon/components";
 const contactMethods = [
     {
-      method: "email",
-      command: "mailto:MalTon55@proton.me",
-      description: "Send me a message",
-      icon: "mdi:email",
-      mobileIcon: "mdi:email",
-      status: "online",
-      primary: true
-    },
-    {
       method: "github",
       command: "https://github.com/malvin555",
       description: "View my code",
@@ -69,13 +60,6 @@ const contactMethods = [
     }
 ]
 
-const helpCommands = [
-  { cmd: "--email", desc: "Send direct message" },
-  { cmd: "--github", desc: "Browse repositories" },
-  { cmd: "--resume", desc: "Download CV/Resume" },
-  { cmd: "--linkedin", desc: "Professional inquiries" },
-  { cmd: "--collab", desc: "Project partnerships" }
-];
 
 const quickActions = [
   { action: "Hire Me", desc: "Full-time opportunities", link: "mailto:malvin@example.com?subject=Job Opportunity" },
@@ -202,18 +186,6 @@ const quickActions = [
 
     <!-- Desktop Content -->
     <div class="hidden md:block">
-      <!-- Help Options -->
-      <div class="mb-8 bg-min border border-tertiary p-4" >
-        <h3 class="text-primary-bright mb-4">OPTIONS:</h3>
-        <div class="space-y-2 text-sm">
-          {helpCommands.map(cmd => (
-            <div class="flex items-start gap-4">
-              <span class="text-yellow-400 w-24">{cmd.cmd}</span>
-              <span class="text-gray-300">{cmd.desc}</span>
-            </div>
-          ))}
-        </div>
-      </div>
 
       <!-- Contact Methods Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -284,50 +256,39 @@ const quickActions = [
       </div>
 
       <!-- Terminal Session -->
-      <div class="bg-min border border-tertiary p-4 mb-8">
-        <h3 class="text-primary-bright mb-4 flex items-center gap-2">
-          <span><Icon name="mdi:terminal" class="block mx-auto" size={24} /></span> Interactive Session
-        </h3>
-        <div class="space-y-2 text-sm">
-          <div class="flex items-center gap-2">
-            <span class="text-primary">$</span>
-            <span class="text-gray-300">ping malvin.dev</span>
-          </div>
-          <div class="text-secondary ml-4">
-            PING malvin.dev: 64 bytes from malvin: icmp_seq=1 ttl=64 time=0.1ms<br/>
-            --- malvin.dev ping statistics ---<br/>
-            1 packets transmitted, 1 received, 0% packet loss
-          </div>
-          <div class="flex items-center gap-2 mt-4">
-            <span class="text-primary">$</span>
-            <span class="text-gray-300">echo "Ready to collaborate!"</span>
-          </div>
-          <div class="text-green-200 ml-4">Ready to collaborate!</div>
-          <div class="flex items-center gap-2 mt-4">
-            <span class="text-primary">$</span>
-            <span class="text-gray-300">cat availability.txt</span>
-          </div>
-          <div class="flex items-center text-green-200 ml-4">
-            <Icon name="mdi:done" class="text-primary mr-2" size={24} />
-            <span>Available for new opportunities</span>
-          </div>
-</div>
-      </div>
+            <div class="bg-min border border-tertiary p-4 mb-8">
+              <h3 class="text-primary-bright mb-4 flex items-center gap-2">
+                <Icon name="mdi:terminal" size={20} />
+                Status
+              </h3>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-center gap-2">
+                  <span class="text-primary">$</span>
+                  <span class="text-gray-300">ping malvin.dev</span>
+                </div>
+                <div class="text-secondary ml-4">
+                  64 bytes from malvin: time=0.1ms
+                </div>
+                <div class="flex items-center gap-2 mt-4">
+                  <span class="text-primary">$</span>
+                  <span class="text-gray-300">cat status.txt</span>
+                </div>
+                <div class="flex items-center text-green-200 ml-4">
+                  <Icon name="mdi:check-circle" class="text-primary mr-2" size={16} />
+                  <span>Available for new opportunities</span>
+                </div>
+              </div>
+            </div>
 
-      <!-- Desktop Footer -->
-      <div class="text-center">
-        <p class="text-secondary mb-4 flex justify-center items-center">
-          Let's build something amazing together
-          <Icon name="mdi:rocket" class="text-primary" size={24} />
-        </p>
-
-        <div class="text-sm text-secondary-dark">
-          <p>$ whoami && echo "Available for new opportunities"</p>
-          <p class="text-primary">malvin - Full-Stack Developer & Linux Enthusiast</p>
-          <p class="text-primary">Available for new opportunities</p>
-        </div>
-      </div>
-    </div>
+            <!-- Desktop Footer -->
+            <div class="text-center">
+              <p class="text-secondary mb-4">Let's build something amazing together</p>
+              <div class="text-sm text-secondary-dark">
+                <p>$ echo "Ready to collaborate"</p>
+                <p class="text-primary">Ready to collaborate</p>
+              </div>
+            </div>
+          </div>
 
     <div id="toast" class="fixed top-20 right-4 bg-muted-dark text-black px-4 py-2 rounded opacity-0 transition-opacity duration-300 z-50 translate-x-0">
       <span id="toast-message">Copied to clipboard!</span>

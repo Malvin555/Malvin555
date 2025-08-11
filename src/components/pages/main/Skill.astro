@@ -2,25 +2,24 @@
 import { Icon } from "astro-icon/components";
 // Skills data
 const skills = {
-  Languages: ["JavaScript", "PHP", "Python", "Bash"],
+  Languages: [
+    "JavaScript",
+    "PHP",
+    "Bash",
+    "React",
+    "Node.js",
+    "Astro",
+    "HTML/CSS",
+  ],
   Databases: ["MySQL", "MariaDB", "MongoDB"],
   DevOps: ["Docker", "Podman", "Linux"],
-  Web: ["React", "Node.js", "Astro", "HTML/CSS"],
-  Learning: ["Cybersecurity", "Languages", "System Administration"],
 };
-
-
 
 const terminalIcons: Record<keyof typeof skills, string> = {
   Languages: "[EXE]",
   Databases: "[DB]",
   DevOps: "[SYS]",
-  Web: "[WWW]",
-  Learning: "[NEW]",
 };
-
-
-
 ---
 
 <section
