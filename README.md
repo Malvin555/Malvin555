@@ -25,8 +25,6 @@ My love for Linux, backend engineering, and devops drives me to keep pushing bou
 
 ---
 
-🛠️ Tech Stack
-
 💻 Languages & Frameworks
 <div align="center">
   <img src="https://skillicons.dev/icons?i=js,ts,python,php,html,css,bash,react,next,nodejs,laravel,astro&theme=dark" />
