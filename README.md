@@ -1,23 +1,3 @@
-<div align="center">
-
-  <!-- LOGO -->
-  <img src="public/apple-touch-icon.png" alt="Malvin Logo" width="100" style="margin-bottom: 20px;" />
-
-  <!-- NAME & TITLE -->
-  <h1 align="center" style="font-size: 3rem; font-weight: bold; margin: 0;">Malvin</h1>
-  <p align="center" style="font-size: 1.2rem; color: #999;">Full-Stack Developer • Linux Enthusiast • Cybersecurity Explorer</p>
-
-  <!-- MOTTO -->
-  <em style="color: #ccc;">"Building the future, one line of code at a time"</em>
-
-  <!-- PROFILE VIEWS -->
-  <br/><br/>
-  <img src="https://komarev.com/ghpvc/?username=Malvin555&label=Profile+Views&color=000000&style=flat-square" alt="Profile Views" />
-
-</div>
-
----
-
 🚀 About Me
 
 I'm Malvin — a passionate full-stack engineer focused on building clean, scalable, and secure systems.  
