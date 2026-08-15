@@ -10,6 +10,9 @@ I enjoy exploring <b>AI</b>, <b>cybersecurity</b>, <b>Linux</b>, <b>backend engi
 while continuously learning through hands-on projects and experimentation.
 </p>
 
+<a href="https://malvin.is-a.dev/">
+  <img src="https://img.shields.io/badge/Portfolio-malvin.is--a.dev-161b22?style=for-the-badge&logo=googlechrome&logoColor=58A6FF&labelColor=0d1117" alt="Portfolio">
+</a>
 
 ## 🌐 Socials
 
