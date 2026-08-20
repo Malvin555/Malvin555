@@ -16,10 +16,10 @@ while continuously learning through hands-on projects and experimentation.
 
 ## 🌐 Socials
 
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/mal.x51)
-[![Reddit](https://img.shields.io/badge/Reddit-%23FF4500.svg?logo=Reddit&logoColor=white)](https://reddit.com/user/Malvin555)
-[![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/Malvin84620227)
-[![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:communicate-with-me@malvn.slmail.me)
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://instagram.com/mal.x51)
+[![Reddit](https://img.shields.io/badge/Reddit-%23FF4500.svg?style=for-the-badge&logo=Reddit&logoColor=white)](https://reddit.com/user/Malvin555)
+[![X](https://img.shields.io/badge/X-black.svg?style=for-the-badge&logo=X&logoColor=white)](https://x.com/Malvin84620227)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:communicate-with-me@malvn.slmail.me)
 
 ---
 
@@ -32,16 +32,26 @@ while continuously learning through hands-on projects and experimentation.
 
 ---
 
-# 📊 GitHub Stats
+# 📊 Stats
 
-<p align="center">
-  <img src="https://github-readme-stats.shion.dev/api?username=Malvin555&theme=dark&hide_border=true&include_all_commits=true&count_private=true" />
-</p>
+<table align="center">
+  <tr>
+    <td>
+      <img src="https://github-readme-stats.shion.dev/api?username=Malvin555&theme=dark&hide_border=true&include_all_commits=true&count_private=true" />
+    </td>
+    <td>
+      <img src="https://streak-stats.demolab.com?user=Malvin555&theme=dark&hide_border=true" />
+    </td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=Malvin555&theme=dark&hide_border=true" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.shion.dev/api/top-langs/?username=Malvin555&theme=dark&hide_border=true&include_all_commits=true&count_private=true&layout=compact" />
-</p>
+<table align="center">
+  <tr>
+    <td width="50%">
+      <img width="100%" src="https://github-readme-stats.shion.dev/api/top-langs/?username=Malvin555&theme=dark&hide_border=true&include_all_commits=true&count_private=true&layout=compact" />
+    </td>
+    <td width="50%">
+      <img width="100%" src="https://api.boot.dev/v1/users/public/76ebbcf3-778a-47e1-aee5-7f4a7bb977a0/thumbnail" />
+    </td>
+  </tr>
+</table>
